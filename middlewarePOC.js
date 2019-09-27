@@ -1,5 +1,3 @@
-'use strict';
-
 var request = require('request');
 var DomParser = require('dom-parser');
 
@@ -9,18 +7,18 @@ const client = require('twilio')(accountSid,authToken);
 
 var parse = new DomParser();
 	
-	let fala = "<?xml version='1.0' encoding='UTF-8'?><Response><Say>Thanks for calling!</Say></Response>";	
-	console.log("teste");
+	var fala = "<?xml version='1.0' encoding='UTF-8'?><Response><Say>Thanks for calling!</Say></Response>";	
+	//console.log("teste");
 	var doc = parse.parseFromString(fala,"text/xml");
-	console.log("entrou");
+	//console.log("entrou");
 	if(fala){
-		//console.log("entrou");
+		console.log("entrou");
 		client.calls
 			  .create({
-				url: doc,   //'http://demo.twilio.com/docs/voice.xml',
+				url: 'http://demo.twilio.com/docs/voice.xml',
 				to: '+5519982412618',
-				from: 'twilio number'
+				from: '+12055761830'
 			}).then(call => console.log(call.sid));
-		//console.log("terminou");	
+		console.log("terminou");	
 	}
 	
