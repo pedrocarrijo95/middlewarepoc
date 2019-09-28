@@ -13,21 +13,19 @@ const server = require('./server.js');
 	});
 	
 	app.listen(process.env.PORT || 8080);
-	console.log('Heroku ligado');
+	console.log('APP ligado');
 	
-	var fala = "Testando, testando,testando";
-	server.start(fala);
-	//console.log("teste");
-	//var doc = parse.parseFromString(fala,"text/xml");
-	//console.log("entrou");
-	if(fala){
-		console.log("entrou");
-		client.calls
-			  .create({
-				url: 'http://127.0.0.1:1337/',//'http://demo.twilio.com/docs/voice.xml',
-				to:  '+5519982412618',
-				from: '+12055761830'
-			}).then(call => console.log(call.sid));
-		console.log("terminou");	
-	}
+	app.post("/api/call", function(req, res) {
+		server.start(req.body);
+		if(req){
+			console.log("entrou");
+			client.calls
+				  .create({
+					url: 'http://127.0.0.1:1337/',
+					to:  '+5519982412618',
+					from: '+12055761830'
+				}).then(call => console.log(call.sid));
+			console.log("terminou");	
+		}
+	});
 	
