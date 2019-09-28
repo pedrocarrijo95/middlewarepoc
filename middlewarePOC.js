@@ -1,13 +1,21 @@
 var request = require('request');
+var express = require('express');
+var app = express();
 
 const accountSid = "AC1458c7907d82d4b0f1f563d046ae2f97";
 const authToken = "8d1a3b4cf1b6851f7f96b13fe37da5d3";
 const client = require('twilio')(accountSid,authToken);
 
 const server = require('./server.js');
+
+	app.get('/',function(req,res){
+		res.send('Olá');
+	});
 	
-	var fala = "Thanks for calling!";	
+	app.listen(process.env.PORT || 8080);
+	console.log('Heroku ligado');
 	
+	var fala = "Testando, testando,testando";
 	server.start(fala);
 	//console.log("teste");
 	//var doc = parse.parseFromString(fala,"text/xml");
