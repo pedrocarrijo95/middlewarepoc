@@ -21,7 +21,7 @@ const server = require('./server.js');
 			console.log("entrou");
 			client.calls
 				  .create({
-					url: 'https://demo.twilio.com/docs/voice.xml',
+					url: 'http://127.0.0.1:1337',//'https://demo.twilio.com/docs/voice.xml',
 					to:  '+5519982412618',
 					from: '+12055761830'
 				}).then(call => console.log(call.sid));
