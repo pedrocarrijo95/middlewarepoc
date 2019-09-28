@@ -1,5 +1,5 @@
 'use strict';
-
+//JS NÃO UTILIZADO, SÓ GUARDADO PARA FUTURO COMPONENTE ODA COM HEROKU
 var request = require('request');
 
 module.exports = {
