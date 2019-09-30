@@ -13,15 +13,14 @@ const client = require('twilio')(accountSid,authToken);
 
 const server = require('./server.js');
 
-	var req = 'rr';
+	//var req = 'rr';
 	server.start(req);
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 	
 
-	//app.post("/api/call", function(req, res) {
-		
-		if(req){
+	app.post("/api/call", function(req, res) {
+			if(req){
 			console.log("entrou");
 			client.calls
 				  .create({
@@ -32,5 +31,5 @@ const server = require('./server.js');
 			console.log("terminou");	
 			//process.exit(0);
 		}
-	//});
+	});
 	
