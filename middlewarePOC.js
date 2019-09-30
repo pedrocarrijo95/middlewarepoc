@@ -22,7 +22,13 @@ const server = require('./server.js');
 	});**/
 	
 	var texto = 'teste teste teste';
-	server.start(texto);
+	const twiml = new VoiceResponse();
+	twiml.say(texto);
+		
+	app.post('/',function(req,res){
+		res.writeHead(200, { 'Content-Type': 'text/xml' });
+		res.end(twiml.toString());
+	});
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 	
