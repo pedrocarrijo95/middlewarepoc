@@ -4,7 +4,7 @@ const axios = require('axios');
 
 var url = "https://testemiddle.herokuapp.com/api/call";
 axios.post(url, {
-  req: 'Heroku funcionou porraaaaaa !!'
+  'body': 'Heroku funcionou porraaaaaa !!'
 })
 .then((res) => {
   console.log(`statusCode: ${res.statusCode}`)
