@@ -15,10 +15,11 @@ const server = require('./server.js');
 	//var req1 = server.start(fala);
 	const twiml = new VoiceResponse();
 	twiml.say(texto);
+	var res1;
 	app.get('/',function(req,res){
-		res.writeHead(200, { 'Content-Type': 'text/xml' });
-		res.end(twiml.toString());
-		//res.send('tt');
+		res1.writeHead(200, { 'Content-Type': 'text/xml' });
+		res1.end(twiml.toString());
+		res.send(res1);
 	});
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
