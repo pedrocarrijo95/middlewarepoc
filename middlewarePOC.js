@@ -29,14 +29,14 @@ const server = require('./server.js');
 	console.log('APP ligado');
 
 	app.post("/api/call", function(req, res) {
-		
-		const twiml = new VoiceResponse();
+		server.start(texto);
+		/**const twiml = new VoiceResponse();
 		twiml.say(texto);
 		
 		app.post('/',function(req,res){
 			res.writeHead(200, { 'Content-Type': 'text/xml' });
 			res.end(twiml.toString());
-		});
+		});**/
 
 		
 		if(texto){
