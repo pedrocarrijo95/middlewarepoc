@@ -26,7 +26,7 @@ const server = require('./server.js');
 	console.log('APP ligado');
 	
 
-	//app.post("/api/call", function(req, res) {
+	app.post("/api/call", function(req, res) {
 		if(texto){
 			console.log("entrou");
 			client.calls
@@ -38,5 +38,5 @@ const server = require('./server.js');
 			console.log("terminou");	
 			//process.exit(0);
 		}
-	//});
+	});
 	
