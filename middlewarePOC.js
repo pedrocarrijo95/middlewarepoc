@@ -20,17 +20,13 @@ const server = require('./server.js');
 		res.writeHead(200, { 'Content-Type': 'text/xml' });
 		res.end(twiml.toString());
 	});**/
-	
+	var texto = 'teste teste teste';
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 	
 
-	app.post("/", function(req, res) {
-		const twiml = new VoiceResponse();
-		twiml.say(req.body);
-		res.writeHead(200, { 'Content-Type': 'text/xml' });
-		res.end(twiml.toString());
-		
+	app.post("/api/call", function(req, res) {
+		server.start(texto);
 		if(req.body){
 			console.log("entrou");
 			client.calls

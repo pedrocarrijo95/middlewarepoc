@@ -2,7 +2,7 @@
 
 const axios = require('axios');
 
-var url = "https://testemiddle.herokuapp.com/";
+var url = "https://testemiddle.herokuapp.com/api/call";
 axios.post(url, {
   'body': 'Heroku funcionou porraaaaaa !!'
 })
