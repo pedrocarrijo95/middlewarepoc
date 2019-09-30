@@ -1,11 +1,25 @@
 const http = require('http');
 var express = require('express');
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
+
 var app = express();
 
 module.exports = {
 	start: function(texto){
-		//http
+	
+	app.post('/voice',(request,response) => {
+		const twiml = new VoiceResponse();
+		twiml.say({voice: 'alice'}, texto);
+		
+		response.type('text/xml');
+		response.send(twiml.toString());	
+		
+	});
+	
+	app.listen(3000, () => {
+		console.log("Listening on port 3000");	
+	});
+		/**http
 		  //.createServer((req, res1) => {
 			// Create TwiML response
 			const twiml = new VoiceResponse();
@@ -20,7 +34,7 @@ module.exports = {
 			
 		 // })
 		  //.listen(1337, '127.0.0.1');
-		  return twiml.toString();
-		//return console.log('TwiML server running at http://127.0.0.1:1337/');
+		  return twiml;
+		//return console.log('TwiML server running at http://127.0.0.1:1337/');**/
 	}
 }
