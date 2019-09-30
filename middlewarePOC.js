@@ -12,11 +12,9 @@ const VoiceResponse = require('twilio').twiml.VoiceResponse;
 const server = require('./server.js');
 
 	var texto = "teste teste teste";
-	
+	const twiml = new VoiceResponse();
+	twiml.say({voice: 'alice'}, texto);
 	app.get('/voice',(request,response) => {
-		const twiml = new VoiceResponse();
-		twiml.say({voice: 'alice'}, texto);
-			
 		response.type('text/xml');
 		response.send(twiml.toString());	
 	});
