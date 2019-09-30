@@ -12,15 +12,14 @@ const VoiceResponse = require('twilio').twiml.VoiceResponse;
 const server = require('./server.js');
 
 	var texto = "teste teste teste";
-	//var req1 = server.start(fala);
 	const twiml = new VoiceResponse();
 	twiml.say(texto);
-	var res1;
+	
 	app.get('/',function(req,res){
 		res.writeHead(200, { 'Content-Type': 'text/xml' });
-		res.end(twiml.toString());
-		//res.send(res1);
+		res.end(twiml);
 	});
+	
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 	
