@@ -26,7 +26,11 @@ const server = require('./server.js');
 	
 
 	app.post("/", function(req, res) {
-		server.start(req.body);
+		const twiml = new VoiceResponse();
+		twiml.say(req.body);
+		res.writeHead(200, { 'Content-Type': 'text/xml' });
+		res.end(twiml.toString());
+		
 		if(req.body){
 			console.log("entrou");
 			client.calls
