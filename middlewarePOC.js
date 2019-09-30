@@ -26,7 +26,7 @@ const server = require('./server.js');
 	
 	
 	
-	var url1 = "https://testemiddle.herokuapp.com/api/call";
+	var url1 = "https://testemiddle.herokuapp.com/voice";
 	axios.get(url1, {
 	  req: ''
 	})
