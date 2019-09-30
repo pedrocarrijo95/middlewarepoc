@@ -22,12 +22,13 @@ const server = require('./server.js');
 	});**/
 	
 	var texto = 'teste teste teste';
-
-			
-		
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
-
+		
+		
+		
+		
+		
 	app.post("/api/call", function(req, res) {
 		
 		const twiml = new VoiceResponse();
@@ -37,7 +38,7 @@ const server = require('./server.js');
 			res.writeHead(200, { 'Content-Type': 'text/xml' });
 			res.end(twiml.toString());
 		});
-
+	
 		
 		if(texto){
 			console.log("entrou");
