@@ -1,6 +1,6 @@
 'use strict'
 
-const axios = require('axios')
+const axios = require('axios');
 
 var url = "https://testemiddle.herokuapp.com/api/call";
 axios.post(url, {
