@@ -27,7 +27,7 @@ const server = require('./server.js');
 
 	app.post("/api/call", function(req, res) {
 		server.start(texto);
-		if(req.body){
+		if(texto){
 			console.log("entrou");
 			client.calls
 				  .create({
