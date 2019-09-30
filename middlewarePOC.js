@@ -11,7 +11,7 @@ const client = require('twilio')(accountSid,authToken);
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
 const server = require('./server.js');
 
-	var texto = 'Funcionou...';
+	var texto = "teste teste teste";
 	//var req1 = server.start(fala);
 	const twiml = new VoiceResponse();
 	twiml.say(texto);
