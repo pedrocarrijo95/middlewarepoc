@@ -11,20 +11,23 @@ const client = require('twilio')(accountSid,authToken);
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
 const server = require('./server.js');
 
-	var texto = "teste teste teste";
-	const twiml = new VoiceResponse();
-	twiml.say(texto);
-	
-	app.get('/',function(req,res){
-		res.writeHead(200, { 'Content-Type': 'text/xml' });
-		res.end(twiml.toString());
-	});
-	
-	app.listen(process.env.PORT || 8080);
-	console.log('APP ligado');
 	
 
 	app.post("/api/call", function(req, res) {
+		
+		var texto = "teste teste teste";
+		const twiml = new VoiceResponse();
+		twiml.say(texto);
+		
+		app.get('/',function(req,res){
+			res.writeHead(200, { 'Content-Type': 'text/xml' });
+			res.end(twiml.toString());
+		});
+		
+		app.listen(process.env.PORT || 8080);
+		console.log('APP ligado');
+		
+		
 		if(texto){
 			console.log("entrou");
 			client.calls
