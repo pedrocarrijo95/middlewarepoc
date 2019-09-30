@@ -17,9 +17,9 @@ const server = require('./server.js');
 	twiml.say(texto);
 	var res1;
 	app.get('/',function(req,res){
-		res1.writeHead(200, { 'Content-Type': 'text/xml' });
-		res1.end(twiml.toString());
-		res.send(res1);
+		res.writeHead(200, { 'Content-Type': 'text/xml' });
+		res.end(twiml.toString());
+		//res.send(res1);
 	});
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
