@@ -1,7 +1,5 @@
 var request = require('request');
 var express = require('express');
-var sys = require('sys')
-var exec = require('child_process').exec;
 
 var app = express();
 
@@ -13,8 +11,14 @@ const client = require('twilio')(accountSid,authToken);
 
 const server = require('./server.js');
 
-	//var req = 'rr';
-	server.start(req);
+	var fala = 'Funcionou...';
+	var req1 = server.start(req);
+	
+	app.get('/teste.xml',function(req,res){
+		res.writeHead(200, { 'Content-Type': 'text/xml' });
+		res.end(req1);
+		//res.send(res1);
+	});
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 	
@@ -24,7 +28,7 @@ const server = require('./server.js');
 			console.log("entrou");
 			client.calls
 				  .create({
-					url: 'https://testemiddle.herokuapp.com:1337',//'https://demo.twilio.com/docs/voice.xml',
+					url: 'https://testemiddle.herokuapp.com/teste.xml',//'https://demo.twilio.com/docs/voice.xml',
 					to:  '+5519982412618',
 					from: '+12055761830'
 				}).then(call => console.log(call.sid));

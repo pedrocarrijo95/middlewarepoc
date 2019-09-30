@@ -1,5 +1,7 @@
 const http = require('http');
+var express = require('express');
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
+var app = express();
 
 module.exports = {
 	start: function(texto){
@@ -13,16 +15,12 @@ module.exports = {
 			//res1.writeHead(200, { 'Content-Type': 'text/xml' });
 			//res1.end(twiml.toString());
 			
-			app.get('/',function(req,res){
-				res.writeHead(200, { 'Content-Type': 'text/xml' });
-				res.end(twiml.toString());
-				//res.send(res1);
-			});
+	
 	
 			
 		 // })
 		  //.listen(1337, '127.0.0.1');
-
-		return console.log('TwiML server running at http://127.0.0.1:1337/');
+		  return twiml.toString();
+		//return console.log('TwiML server running at http://127.0.0.1:1337/');
 	}
 }
