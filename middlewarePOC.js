@@ -20,19 +20,14 @@ const server = require('./server.js');
 		res.writeHead(200, { 'Content-Type': 'text/xml' });
 		res.end(twiml.toString());
 	});**/
-	var texto;
-	app.post("/api/setmessage", function(req, res) {
-		texto = req.body;
-	});
-	
-	server.start(texto);
 	
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 	
 
-	app.post("/api/call", function(req, res) {
-		if(texto){
+	app.post("/", function(req, res) {
+		server.start(req.body);
+		if(req.body){
 			console.log("entrou");
 			client.calls
 				  .create({
@@ -44,6 +39,4 @@ const server = require('./server.js');
 			//process.exit(0);
 		}
 	});
-	
-
 	
