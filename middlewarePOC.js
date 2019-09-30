@@ -16,7 +16,7 @@ const server = require('./server.js');
 	const twiml = new VoiceResponse();
 	twiml.say(texto);
 	
-	app.get('/',function(req,res){
+	app.post('/',function(req,res){
 		res.writeHead(200, { 'Content-Type': 'text/xml' });
 		res.end(twiml.toString());
 	});
@@ -24,19 +24,6 @@ const server = require('./server.js');
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 	
-	
-	
-	var url1 = "https://testemiddle.herokuapp.com/voice";
-	axios.get(url1, {
-	  req: ''
-	})
-	.then((res) => {
-	  console.log(`statusCode: ${res.statusCode}`)
-	  console.log(res)
-	})
-	.catch((error) => {
-	  console.error(error)
-	})
 
 	app.post("/api/call", function(req, res) {
 		if(texto){
