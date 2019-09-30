@@ -21,12 +21,13 @@ const server = require('./server.js');
 		res.end(twiml.toString());
 	});**/
 	
-	app.listen(process.env.PORT || 8080);
-	console.log('APP ligado');
+
 	
 
 	app.post("/api/call", function(req, res) {
 		server.start(req.body);
+		app.listen(process.env.PORT || 8080);
+		console.log('APP ligado');
 		if(req.body){
 			console.log("entrou");
 			client.calls
