@@ -22,7 +22,7 @@ const server = require('./server.js');
 	});**/
 	
 		var te = '';
-		const twiml;
+		var twiml;
 		app.listen(process.env.PORT || 8080);
 		console.log('APP ligado');
 		
