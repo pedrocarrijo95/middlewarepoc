@@ -4,9 +4,9 @@ var request = require('request');
 const axios = require('axios');
 
 var fala = 'texto';
-var url = "https://testemiddle.herokuapp.com/api/call/";
+var url1 = "https://testemiddle.herokuapp.com/api/call/";
     var clientServerOptions = {
-        uri: 'http://'+clientHost+''+clientContext,
+        uri: url1,
         body: JSON.stringify(fala),
         method: 'POST',
         headers: {
