@@ -28,18 +28,18 @@ const server = require('./server.js');
 		
 	app.get("/api/call/:message", function(req, res) {
 		
-		res.send(req.params.message);
-		
-		/**const twiml = new VoiceResponse();
-		twiml.say(req.params.message);
+		//res.send(req.params.message);
+		var t = req.params.message;
+		const twiml = new VoiceResponse();
+		twiml.say(t);
 		
 		app.get('/',function(req,res){
 			res.writeHead(200, { 'Content-Type': 'text/xml' });
 			res.end(twiml.toString());
-		});**/
+		});
 	
 		
-		/**if(texto){
+		if(t){
 			console.log("entrou");
 			client.calls
 				  .create({
@@ -49,6 +49,6 @@ const server = require('./server.js');
 				}).then(call => console.log(call.sid));
 			console.log("terminou");	
 			//process.exit(0);
-		}**/
+		}
 	});
 	
