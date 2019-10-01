@@ -29,7 +29,7 @@ const server = require('./server.js');
 		
 		
 		
-	app.post("/api/call:message", function(req, res) {
+	app.post("/api/call/:message", function(req, res) {
 		
 		const twiml = new VoiceResponse();
 		twiml.say(req.params.message);
