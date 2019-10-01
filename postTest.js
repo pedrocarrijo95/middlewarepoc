@@ -2,18 +2,23 @@
 
 const axios = require('axios');
 
-axios.request({
-  method: 'GET',
-  url: 'https://testemiddle.herokuapp.com/api/call/testando teste',
-  data: {
-    //message: 'testando testando testando'
-  },
-
+var url = "https://testemiddle.herokuapp.com/api/call/testando teste";
+axios.get(url, {
+  //'body': '{message: 'teste'}';
+ // message: 'teste teste teste'
 })
 .then((res) => {
   ///console.log(`statusCode: ${res.statusCode}`)
   console.log(res.data.message)
 }, (error) => {
-  console.error(error.response)
+  console.error(error);
 })
 
+/**axios.request({
+  method: 'POST',
+  url: 'https://testemiddle.herokuapp.com/api/call/',
+  data: {
+    message: 'testando testando testando'
+  },
+
+})**/
