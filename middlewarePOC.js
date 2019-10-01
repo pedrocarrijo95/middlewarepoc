@@ -24,7 +24,6 @@ const server = require('./server.js');
 	
 	var texto = 'teste teste teste';
 	
-	app.use(bodyParser.urlencoded({ extended: false }));
 	app.use(bodyParser.json())
 	
 	app.listen(process.env.PORT || 8080);
