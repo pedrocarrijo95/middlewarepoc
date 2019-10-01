@@ -26,11 +26,17 @@ const server = require('./server.js');
 		console.log('APP ligado');
 		
 		
-	app.get("/api/call/:message", function(req, res) {
+	app.post("/api/call/", function(req, res) {
 		
 		//res.send(req.params.message);
-		var t = req.params.message.data;
-
+		var t = 't';
+		const twiml = new VoiceResponse();
+		twiml.say(t);
+		
+		app.post('/',function(req,res){
+			res.writeHead(200, { 'Content-Type': 'text/xml' });
+			res.end(twiml.toString());
+		});
 	
 		
 		if(t){
