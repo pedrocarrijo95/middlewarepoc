@@ -34,9 +34,9 @@ const server = require('./server.js');
 		const twiml = new VoiceResponse();
 		twiml.say(req.fala);
 		
-		app.post('/',function(req1,res1){
-			res1.writeHead(200, { 'Content-Type': 'text/xml' });
-			res1.end(twiml.toString());
+		app.post('/',function(req,res){
+			res.writeHead(200, { 'Content-Type': 'text/xml' });
+			res.end(twiml.toString());
 		});
 	
 		
