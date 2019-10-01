@@ -22,13 +22,14 @@ const server = require('./server.js');
 	});**/
 	
 		var te = '';
-		const twiml = new VoiceResponse();
+		const twiml;
 		app.listen(process.env.PORT || 8080);
 		console.log('APP ligado');
 		
 		
 	app.get("/api/call/:message", function(req, res) {
 		te = req.params.message;
+		twiml = new VoiceResponse();
 		twiml.say(te);
 		
 		app.post('/',function(req,res){
