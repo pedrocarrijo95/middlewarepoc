@@ -26,12 +26,9 @@ const server = require('./server.js');
 		console.log('APP ligado');
 		
 		
-	app.post("/api/call/", function(req, res) {
-		
-		//res.send(req.params.message);
-		var t = 't';
+	app.post("/api/call/", function(req, res) {;
 		const twiml = new VoiceResponse();
-		twiml.say(t);
+		twiml.say(texto);
 		
 		app.post('/',function(req,res){
 			res.writeHead(200, { 'Content-Type': 'text/xml' });
@@ -39,13 +36,13 @@ const server = require('./server.js');
 		});
 	
 		
-		if(t){
+		if(texto){
 			console.log("entrou");
 			client.calls
 				  .create({
 					url: 'https://testemiddle.herokuapp.com',//'https://demo.twilio.com/docs/voice.xml',
 					to:  '+5519982412618',
-					from: '+12055761830'
+					from: '+13343397409'
 				}).then(call => console.log(call.sid));
 			console.log("terminou");	
 			//process.exit(0);
