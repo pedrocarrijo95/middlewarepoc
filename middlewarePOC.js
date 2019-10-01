@@ -33,12 +33,12 @@ const server = require('./server.js');
 		
 		
 		
-	app.post("/api/call/", function(req, res) {
+	app.get("/api/call/:message", function(req, res) {
 
 		const twiml = new VoiceResponse();
 		twiml.say(req.data.message);
 		
-		app.post('/',function(req,res){
+		app.get('/',function(req,res){
 			res.writeHead(200, { 'Content-Type': 'text/xml' });
 			res.end(twiml.toString());
 		});

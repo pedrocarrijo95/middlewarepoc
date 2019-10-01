@@ -4,9 +4,9 @@ const axios = require('axios');
 
 var url = "https://testemiddle.herokuapp.com/api/call";
 axios.request({
-  method: 'POST',
-  url: 'https://testemiddle.herokuapp.com/api/call',
-  data: {
+  method: 'GET',
+  url: 'https://testemiddle.herokuapp.com/api/call/t',
+  params: {
     message: 'lets add something here'
   },
 
