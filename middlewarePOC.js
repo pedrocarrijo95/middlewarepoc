@@ -30,13 +30,7 @@ const server = require('./server.js');
 		
 		//res.send(req.params.message);
 		var t = req.params.message.data;
-		const twiml = new VoiceResponse();
-		twiml.say(t);
-		
-		app.get('/',function(req,res){
-			res.writeHead(200, { 'Content-Type': 'text/xml' });
-			res.end(twiml.toString());
-		});
+
 	
 		
 		if(t){
