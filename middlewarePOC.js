@@ -37,7 +37,7 @@ const server = require('./server.js');
 	app.post("/api/call/", function(req, res) {
 
 		const twiml = new VoiceResponse();
-		//twiml.say(req.data.message);
+		twiml.say(res.data.message);
 		
 		app.post('/',function(req,res){
 			res.writeHead(200, { 'Content-Type': 'text/xml' });
@@ -45,7 +45,7 @@ const server = require('./server.js');
 		});
 	
 		
-		if(req.data.message.toString()){
+		if(res.data.message.toString()){
 			console.log("entrou");
 			client.calls
 				  .create({
