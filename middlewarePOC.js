@@ -21,14 +21,14 @@ const server = require('./server.js');
 		res.end(twiml.toString());
 	});**/
 	
-	var texto = 'teste teste teste';
+		var te = '';
+		const twiml = new VoiceResponse();
 		app.listen(process.env.PORT || 8080);
 		console.log('APP ligado');
 		
 		
 	app.get("/api/call/:message", function(req, res) {
-		var te = req.params.message;
-		const twiml = new VoiceResponse();
+		te = req.params.message;
 		twiml.say(te);
 		
 		app.post('/',function(req,res){
