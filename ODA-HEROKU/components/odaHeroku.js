@@ -13,18 +13,16 @@ module.exports = {
     let texto_ = conversation.properties().texto;
 	
 	if (texto_) {  
-		var url = "https://testemiddle.herokuapp.com/api/call/testando";
+		var url = "https://testemiddle.herokuapp.com/api/call/";
 		axios.post(url, {
-		  //req: texto_
+		  message: texto_
 		})
 		.then((res) => {
 		  console.log(`statusCode: ${res.statusCode}`)
 		  console.log(res)
-		  //process.exit(0);
 		})
 		.catch((error) => {
 		  console.error(error)
-		  //process.exit(0);
 		})
 		//done();
 		

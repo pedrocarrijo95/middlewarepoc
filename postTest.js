@@ -3,10 +3,10 @@
 const axios = require('axios');
 
 axios.request({
-  method: 'POST',
-  url: 'https://testemiddle.herokuapp.com/api/call/',
+  method: 'GET',
+  url: 'https://testemiddle.herokuapp.com/api/call/testando teste',
   data: {
-    message: 'testando testando testando'
+    //message: 'testando testando testando'
   },
 
 })
