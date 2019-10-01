@@ -10,15 +10,15 @@ module.exports = {
     supportedActions: []
   }),
   invoke: (conversation, done) => {
-    let texto_ = conversation.properties().texto;
+    var texto_ = conversation.properties().texto;
 	
 	if (texto_) {  
-		var url = "https://testemiddle.herokuapp.com/api/call/";
-		axios.post(url, {
-		  message: texto_
+		var url = "https://testemiddle.herokuapp.com/api/call/"+texto_;
+		axios.get(url, {
+		  //message: texto_
 		})
 		.then((res) => {
-		  console.log(`statusCode: ${res.statusCode}`)
+		  //console.log(`statusCode: ${res.statusCode}`)
 		  console.log(res)
 		})
 		.catch((error) => {
