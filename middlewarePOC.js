@@ -28,13 +28,15 @@ const server = require('./server.js');
 		
 	app.get("/api/call/:message", function(req, res) {
 		
-		const twiml = new VoiceResponse();
+		res.send(req.params.message);
+		
+		/**const twiml = new VoiceResponse();
 		twiml.say(req.params.message);
 		
 		app.get('/',function(req,res){
 			res.writeHead(200, { 'Content-Type': 'text/xml' });
 			res.end(twiml.toString());
-		});
+		});**/
 	
 		
 		/**if(texto){

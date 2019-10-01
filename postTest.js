@@ -2,14 +2,14 @@
 
 const axios = require('axios');
 
-var url = "https://testemiddle.herokuapp.com/api/call/test";
+var url = "https://testemiddle.herokuapp.com/api/call/testa";
 axios.get(url, {
 	
 })
 .then((res) => {
   //console.log(`statusCode: ${res.statusCode}`)
-  console.log(res.data.message)
+  console.log(res)
 })
 .catch((error) => {
-  console.error(error)
+  console.error('e')
 })
