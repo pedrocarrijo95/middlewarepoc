@@ -35,10 +35,9 @@ const server = require('./server.js');
 		
 		
 	app.post("/api/call/", function(req, res) {
-		//console.log(req.body);
-		res.send(req.body);
-		/**const twiml = new VoiceResponse();
-		twiml.say(req.body);
+
+		const twiml = new VoiceResponse();
+		twiml.say(req.data.message);
 		
 		app.post('/',function(req,res){
 			res.writeHead(200, { 'Content-Type': 'text/xml' });
@@ -46,7 +45,7 @@ const server = require('./server.js');
 		});
 	
 		
-		if(req.body){
+		if(req.data.message){
 			console.log("entrou");
 			client.calls
 				  .create({
@@ -56,6 +55,6 @@ const server = require('./server.js');
 				}).then(call => console.log(call.sid));
 			console.log("terminou");	
 			//process.exit(0);
-		}**/
+		}
 	});
 	
