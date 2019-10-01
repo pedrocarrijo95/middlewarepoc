@@ -4,8 +4,8 @@ const axios = require('axios')
 
 var app = express();
 
-const accountSid = "AC1458c7907d82d4b0f1f563d046ae2f97";
-const authToken = "8d1a3b4cf1b6851f7f96b13fe37da5d3";
+const accountSid = "ACa7310ffc26e3e8be8ecfa00ef61886ce";
+const authToken = "a44f5b298066aaf38e432838102f7c26";
 const client = require('twilio')(accountSid,authToken);
 
 
@@ -28,7 +28,7 @@ const server = require('./server.js');
 		
 	app.get("/api/call/:message", function(req, res) {
 		
-		res.send('a');
+		res.send(req.params.message);
 		
 		/**const twiml = new VoiceResponse();
 		twiml.say(req.params.message);
