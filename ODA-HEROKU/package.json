@@ -1,7 +1,6 @@
 {
   "name": "odaheroku",
   "version": "1.0.0",
-  "description": "",
   "main": "main.js",
   "dependencies": {
     "@oracle/bots-node-sdk": "^2.2.1",
@@ -11,6 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "pedro",
+  "license": "ISC",
+  "description": ""
 }
