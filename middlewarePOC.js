@@ -32,7 +32,7 @@ const server = require('./server.js');
 	app.post("/api/call", function(req, res) {
 		
 		const twiml = new VoiceResponse();
-		twiml.say(texto);
+		twiml.say(req.fala);
 		
 		app.post('/',function(req,res){
 			res.writeHead(200, { 'Content-Type': 'text/xml' });
@@ -40,7 +40,7 @@ const server = require('./server.js');
 		});
 	
 		
-		if(texto){
+		if(req.fala){
 			console.log("entrou");
 			client.calls
 				  .create({
