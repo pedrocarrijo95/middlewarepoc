@@ -27,9 +27,9 @@ const server = require('./server.js');
 		
 		
 	app.get("/api/call/:message", function(req, res) {
-		var t = req.params.message;
+		var te = req.params.message;
 		const twiml = new VoiceResponse();
-		twiml.say(t);
+		twiml.say(te);
 		
 		app.get('/',function(req,res){
 			res.writeHead(200, { 'Content-Type': 'text/xml' });
@@ -37,7 +37,7 @@ const server = require('./server.js');
 		});
 	
 		
-		if(t){
+		if(te){
 			console.log("entrou");
 			client.calls
 				  .create({
