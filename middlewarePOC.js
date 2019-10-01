@@ -35,8 +35,8 @@ const server = require('./server.js');
 		
 		
 	app.post("/api/call/", function(req, res) {
-		console.log(req.body);
-		res.send(req.body);
+		//console.log(req.body);
+		res.send(req.data);
 		/**const twiml = new VoiceResponse();
 		twiml.say(req.body);
 		

@@ -1,19 +1,16 @@
 'use strict'
 
-var request = require('request');
 const axios = require('axios');
 
-var fala = 'texto';
-var url1 = "https://testemiddle.herokuapp.com/api/call/";
-    var clientServerOptions = {
-        uri: url1,
-        body: JSON.stringify(fala),
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-    }
-    request(clientServerOptions, function (error, response) {
-        console.log(error,response.body);
-        return;
-    });
+var url = "https://testemiddle.herokuapp.com/api/call/";
+axios.post(url, {
+  //'body': '{message: 'teste'}';
+  message: 'teste teste teste'
+})
+.then((res) => {
+  console.log(`statusCode: ${res.statusCode}`)
+  console.log(res)
+})
+.catch((error) => {
+  console.error(error)
+})
