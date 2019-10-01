@@ -1,4 +1,5 @@
 var request = require('request');
+var bodyParser = require('body-parser');
 var express = require('express');
 const axios = require('axios')
 
@@ -22,6 +23,10 @@ const server = require('./server.js');
 	});**/
 	
 	var texto = 'teste teste teste';
+	
+	app.use(bodyParser.urlencoded({ extended: false }));
+	app.use(bodyParser.json())
+	
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 		
@@ -29,18 +34,18 @@ const server = require('./server.js');
 		
 		
 		
-	app.get("/api/call/:message", function(req, res) {
+	app.post("/api/call/:message", function(req, res) {
+		console.log(req.body);
+		/**const twiml = new VoiceResponse();
+		twiml.say(req.body);
 		
-		const twiml = new VoiceResponse();
-		twiml.say(req.params.message);
-		
-		app.get('/',function(req,res){
+		app.post('/',function(req,res){
 			res.writeHead(200, { 'Content-Type': 'text/xml' });
 			res.end(twiml.toString());
 		});
 	
 		
-		if(req.params.message){
+		if(req.body){
 			console.log("entrou");
 			client.calls
 				  .create({
@@ -50,6 +55,6 @@ const server = require('./server.js');
 				}).then(call => console.log(call.sid));
 			console.log("terminou");	
 			//process.exit(0);
-		}
+		}**/
 	});
 	

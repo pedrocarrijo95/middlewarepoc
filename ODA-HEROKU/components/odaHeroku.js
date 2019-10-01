@@ -14,7 +14,7 @@ module.exports = {
 	
 	if (texto_) {  
 		var url = "https://testemiddle.herokuapp.com/api/call/testando";
-		axios.get(url, {
+		axios.post(url, {
 		  //req: texto_
 		})
 		.then((res) => {
