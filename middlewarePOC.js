@@ -22,9 +22,9 @@ const server = require('./server.js');
 		res.end(twiml.toString());
 	});**/
 	
-	var texto = 'teste teste teste';
+	//var texto = 'teste teste teste';
 	
-	app.use(bodyParser.json())
+	//app.use(bodyParser.json())
 	
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');

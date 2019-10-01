@@ -14,6 +14,6 @@ axios.request({
   ///console.log(`statusCode: ${res.statusCode}`)
   console.log(res.data.message)
 }, (error) => {
-  console.error(error)
+  console.error(error.response)
 })
 
