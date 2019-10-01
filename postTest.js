@@ -2,14 +2,9 @@
 
 const axios = require('axios');
 
-var url = "https://testemiddle.herokuapp.com/api/call";
-axios.request({
-  method: 'GET',
-  url: 'https://testemiddle.herokuapp.com/api/call/t',
-  params: {
-    message: 'lets add something here'
-  },
-
+var url = "https://testemiddle.herokuapp.com/api/call/test";
+axios.get(url, {
+	
 })
 .then((res) => {
   //console.log(`statusCode: ${res.statusCode}`)

@@ -1,5 +1,4 @@
 var request = require('request');
-var bodyParser = require('body-parser');
 var express = require('express');
 const axios = require('axios')
 
@@ -22,30 +21,23 @@ const server = require('./server.js');
 		res.end(twiml.toString());
 	});**/
 	
-	//var texto = 'teste teste teste';
-	
-	//app.use(bodyParser.json())
-	
-	app.listen(process.env.PORT || 8080);
-	console.log('APP ligado');
+	var texto = 'teste teste teste';
+		app.listen(process.env.PORT || 8080);
+		console.log('APP ligado');
 		
 		
+	app.post("/api/call", function(req, res) {
 		
+		const twiml = new VoiceResponse();
+		twiml.say(texto);
 		
-		
-	app.get("/api/call/:message", function(req, res) {
-
-		console.log(req.data.message);
-		//const twiml = new VoiceResponse();
-		//twiml.say(req.data.message);
-		
-		//app.get('/',function(req,res){
-			//res.writeHead(200, { 'Content-Type': 'text/xml' });
-			//res.end(twiml.toString());
-		//});
+		app.post('/',function(req,res){
+			res.writeHead(200, { 'Content-Type': 'text/xml' });
+			res.end(twiml.toString());
+		});
 	
 		
-		/**if(res.body.message){
+		/**if(texto){
 			console.log("entrou");
 			client.calls
 				  .create({
