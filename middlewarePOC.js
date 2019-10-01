@@ -33,18 +33,18 @@ const server = require('./server.js');
 		
 		
 		
-	app.get("/api/call/:message", function(req, res) {
+	app.post("/api/call/", function(req, res) {
 
 		const twiml = new VoiceResponse();
-		twiml.say(req.params.message);
+		twiml.say(req.body.message);
 		
-		app.get('/',function(req,res){
+		app.post('/',function(req,res){
 			res.writeHead(200, { 'Content-Type': 'text/xml' });
 			res.end(twiml.toString());
 		});
 	
 		
-		if(req.params.message){
+		/**if(res.body.message){
 			console.log("entrou");
 			client.calls
 				  .create({
@@ -54,6 +54,6 @@ const server = require('./server.js');
 				}).then(call => console.log(call.sid));
 			console.log("terminou");	
 			//process.exit(0);
-		}
+		}**/
 	});
 	
