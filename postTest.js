@@ -3,7 +3,7 @@
 const axios = require('axios');
 
 var url = "https://testemiddle.herokuapp.com/api/call/test";
-axios.post(url, {
+axios.get(url, {
   //message: 'teste teste teste'
 })
 .then((res) => {
