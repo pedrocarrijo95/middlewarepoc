@@ -58,7 +58,7 @@ const server = require('./server.js');
 
 	}	
 		
-	app.get("/api/call/:message", function(req, res) {
+	app.get("/api/call/:message", async function(req, res) {
 		te = req.params.message;
 		//twiml = new VoiceResponse();
 		//twiml.say(te);
