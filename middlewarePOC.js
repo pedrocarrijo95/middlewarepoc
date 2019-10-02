@@ -59,24 +59,6 @@ const server = require('./server.js');
 	
 	app.post("/gather", function (req, res) {
 		twiml = new VoiceResponse();
-		if (req.body.Digits) {
-			switch (req.body.Digits) {
-			  case '1':
-				twiml.say('You selected sales. Good for you!');
-				break;
-			  case '2':
-				twiml.say('You need support. We will help!');
-				break;
-			  default:
-				twiml.say("Sorry, I don't understand that choice.").pause();
-				twiml.redirect('/');
-				break;
-			}
-		} 
-		else {
-			// If no input was sent, use the <Gather> verb to collect user input
-			twiml.redirect('/');
-		}
 	  twiml.say("lalallalalalalala");
 	  res.type('text/xml');
 	  res.send(twiml.toString());	  
