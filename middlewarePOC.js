@@ -31,8 +31,11 @@ const server = require('./server.js');
 			  method: 'POST'
 			}, 'https://testemiddle.herokuapp.com/');
 		}
+		gather();
+		res.writeHead(200, { 'Content-Type': 'text/xml' });
+		res.end('req: '+req.body);
 		
-		if (req.body.Digits) {
+		/**if (req.body.Digits) {
 			switch (req.body.Digits) {
 			  case '1':
 				twiml.say('You selected sales. Good for you!');
@@ -45,7 +48,7 @@ const server = require('./server.js');
 				gather();
 				break;
 			}
-		}/** 
+		} 
 		  else {
 			// If no input was sent, use the <Gather> verb to collect user input
 			gather();
@@ -65,7 +68,7 @@ const server = require('./server.js');
 		//twiml = new VoiceResponse();
 		//twiml.say(te);
 		
-		twiml.redirect('/');
+		//twiml.redirect('/');
 		
 
 		
