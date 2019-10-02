@@ -48,12 +48,6 @@ const server = require('./server.js');
 			// If no input was sent, use the <Gather> verb to collect user input
 			gather();
 		  }
-
-				
-		app.post('/',function(req,res){
-			res.writeHead(200, { 'Content-Type': 'text/xml' });
-			res.end(twiml.toString());
-		});
 	
 
 	}	
