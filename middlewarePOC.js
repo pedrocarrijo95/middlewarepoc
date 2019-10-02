@@ -23,11 +23,11 @@ const server = require('./server.js');
 	app.post("/", function (req, res) {
 		twiml = new VoiceResponse();
 		const gatherNode = twiml.gather({ 
-			action: '/gather/'+req	,
+			action: '/gather',
 			input: 'dtmf',
 			timeout: 15,
 			numDigits: 1,
-			method: 'GET'
+			method: 'POST'
 		});
 		gatherNode.say('For sales, press 1. For support, press 2.');
 		
@@ -57,10 +57,10 @@ const server = require('./server.js');
 		res.send(twiml.toString());
 	}**/
 	
-	app.get("/gather/:request", function (req, res) {
+	app.post("/gather", function (req, res) {
 		twiml = new VoiceResponse();
 
-	  twiml.say("body: "+req.params);
+	  twiml.say("body: "+req.body.Digits);
 	  res.type('text/xml');
 	  res.send(twiml.toString());	  
 	});
