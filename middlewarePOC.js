@@ -12,14 +12,6 @@ const client = require('twilio')(accountSid,authToken);
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
 const server = require('./server.js');
 
-	/**var texto = "teste teste teste";
-	const twiml = new VoiceResponse();
-	twiml.say(texto);
-	
-	app.post('/',function(req,res){
-		res.writeHead(200, { 'Content-Type': 'text/xml' });
-		res.end(twiml.toString());
-	});**/
 	
 		var te = '';
 		var twiml;
@@ -30,7 +22,34 @@ const server = require('./server.js');
 	app.get("/api/call/:message", function(req, res) {
 		te = req.params.message;
 		twiml = new VoiceResponse();
-		twiml.say(te);
+		//twiml.say(te);
+		
+		function gather() {
+			const gatherNode = twiml.gather({ numDigits: 1 });
+			gatherNode.say('For sales, press 1. For support, press 2.');
+
+			// If the user doesn't enter input, loop
+			twiml.redirect('/api/call/');
+		}
+		
+		if (req.body.Digits) {
+			switch (req.body.Digits) {
+			  case '1':
+				twiml.say('You selected sales. Good for you!');
+				break;
+			  case '2':
+				twiml.say('You need support. We will help!');
+				break;
+			  default:
+				twiml.say("Sorry, I don't understand that choice.").pause();
+				gather();
+				break;
+			}
+		  } 
+		  else {
+			// If no input was sent, use the <Gather> verb to collect user input
+			gather();
+		  }
 		
 		app.post('/',function(req,res){
 			res.writeHead(200, { 'Content-Type': 'text/xml' });
