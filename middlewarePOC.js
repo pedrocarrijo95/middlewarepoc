@@ -24,10 +24,7 @@ const server = require('./server.js');
 		twiml = new VoiceResponse();
 		const gatherNode = twiml.gather({ 
 			action: '/gather',
-			input: 'dtmf',
-			timeout: 15,
 			numDigits: 1,
-			method: 'POST'
 		});
 		gatherNode.say('For sales, press 1. For support, press 2.');
 		
@@ -60,7 +57,7 @@ const server = require('./server.js');
 	app.post("/gather", function (req, res) {
 		twiml = new VoiceResponse();
 
-	  twiml.say("body: "+req.body.Digits);
+	  twiml.say("body: "+req.body);
 	  res.type('text/xml');
 	  res.send(twiml.toString());	  
 	});
