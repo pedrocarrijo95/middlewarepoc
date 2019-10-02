@@ -23,15 +23,6 @@ const server = require('./server.js');
 	app.post("/", async function(req, res) {
 		twiml = new VoiceResponse();
 	
-		
-		if(control != 1){
-		  twiml.say({ voice: 'alice' }, 'teste teste');
-		  res.type('text/xml');
-		  res.send(twiml.toString());	
-		  control = 1;
-		}
-		else{
-	
 		function gather() {
 			const gatherNode = twiml.gather({ numDigits: 1 });
 			gatherNode.say('For sales, press 1. For support, press 2.');
@@ -41,9 +32,17 @@ const server = require('./server.js');
 			  method: 'POST'
 			}, 'https://testemiddle.herokuapp.com/');
 		}
-		await gather();
+		if(control != 1){
+		  twiml.say({ voice: 'alice' }, 'teste teste');
+		  res.type('text/xml');
+		  res.send(twiml.toString());	
+		  control = 1;
+		  gather();
+		}
+		else{
+		//gather();
 		res.writeHead(200, { 'Content-Type': 'text/xml' });
-		res.end('req: '+req.body);
+		res.end(twiml.toString());
 		
 		/**if (req.body.Digits) {
 			switch (req.body.Digits) {

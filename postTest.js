@@ -4,7 +4,7 @@ const axios = require('axios');
 
 var url = "https://testemiddle.herokuapp.com/api/call/teste teste";
 var url2 = "https://testemiddle.herokuapp.com/ligar";
-axios.get(url2, {
+axios.get(url, {
 	//message: 'teste'
 })
 .then((res) => {
