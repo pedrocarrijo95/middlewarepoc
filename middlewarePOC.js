@@ -49,11 +49,7 @@ const server = require('./server.js');
 			gather();
 		  }
 
-				
-		app.post('/',function(req,res){
-			res.writeHead(200, { 'Content-Type': 'text/xml' });
-			res.end(twiml.toString());
-		});
+
 	
 
 	}	
