@@ -91,7 +91,7 @@ const server = require('./server.js');
 			console.log("entrou");
 			client.calls
 				  .create({
-					url: 'https://testemiddle.herokuapp.com',//'https://demo.twilio.com/docs/voice.xml',
+					url: 'https://testemiddle.herokuapp.com/gather',//'https://demo.twilio.com/docs/voice.xml',
 					to:  '+5519982412618',
 					from: '+13343397409'
 				}).then(call => console.log(call.sid));
