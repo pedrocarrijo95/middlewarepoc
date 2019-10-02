@@ -22,29 +22,23 @@ const server = require('./server.js');
 		
 	app.post("/", async function(req, res) {
 		twiml = new VoiceResponse();
-	
-		function gather() {
-			const gatherNode = twiml.gather({ numDigits: 1 });
-			gatherNode.say('For sales, press 1. For support, press 2.');
 
-			// If the user doesn't enter input, loop
-			twiml.redirect({
-			  method: 'POST'
-			}, 'https://testemiddle.herokuapp.com/');
-		}
-		if(control != 1){
-		  twiml.say({ voice: 'alice' }, 'teste teste');
-		  res.type('text/xml');
-		  res.send(twiml.toString());	
-		  control = 1;
-		  twiml.redirect('/');
-		}
-		else{
-		gather();
-		res.writeHead(200, { 'Content-Type': 'text/xml' });
-		res.end(twiml.toString());
+		const gatherNode = twiml.gather({ numDigits: 1, action: '/gather'});
+		gatherNode.say('For sales, press 1. For support, press 2.');
 		
-		/**if (req.body.Digits) {
+		// If the user doesn't enter input, loop
+		twiml.redirect('/');
+			
+
+		res.type('text/xml');
+		res.send(twiml.toString());
+
+	});	
+	
+	app.post("/gather", function(req,res){
+				
+		twiml = new VoiceResponse();		
+		if (req.body.Digits) {
 			switch (req.body.Digits) {
 			  case '1':
 				twiml.say('You selected sales. Good for you!');
@@ -54,31 +48,22 @@ const server = require('./server.js');
 				break;
 			  default:
 				twiml.say("Sorry, I don't understand that choice.").pause();
-				gather();
+				twiml.redirect('/');
 				break;
 			}
 		} 
-		  else {
+		else {
 			// If no input was sent, use the <Gather> verb to collect user input
-			gather();
-		  }
-
-				
-		app.post('/',function(req,res){
-			res.writeHead(200, { 'Content-Type': 'text/xml' });
-			res.end(twiml.toString());
-		});**/
+			twiml.redirect('/');
 		}
-	
-
-	});	
+		
+	  response.type('text/xml');
+	  response.send(twiml.toString());		
+		
+	});
 		
 	app.get("/api/call/:message", async function(req, res) {
 		te = req.params.message;
-		//twiml = new VoiceResponse();
-		//twiml.say(te);
-		
-		//twiml.redirect('/');
 		
 
 		
