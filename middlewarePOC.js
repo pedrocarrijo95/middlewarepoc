@@ -20,7 +20,7 @@ const server = require('./server.js');
 		console.log('APP ligado');
 		
 		
-	app.post("/", (req, res) {
+	app.post("/", function (req, res) {
 		twiml = new VoiceResponse();
 		const gatherNode = twiml.gather({ 
 			action: '/gather',
@@ -39,7 +39,7 @@ const server = require('./server.js');
 		res.send(twiml.toString());
 	});	
 	
-	function initGather(res){
+	/**function initGather(res){
 		const gatherNode = twiml.gather({ 
 			action: '/gather',
 			input: 'dtmf',
@@ -55,9 +55,9 @@ const server = require('./server.js');
 
 		res.type('text/xml');
 		res.send(twiml.toString());
-	}
+	}**/
 	
-	app.post("/gather", (req, res) {
+	app.post("/gather", function (req, res) {
 		twiml = new VoiceResponse();
 		if (req.body.Digits) {
 			switch (req.body.Digits) {
