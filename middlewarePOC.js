@@ -54,7 +54,7 @@ const server = require('./server.js');
 		res.send(twiml.toString());
 	}**/
 	
-	app.post("/gather", function (req, res) {
+	app.post("/gather", (req, res) {
 		twiml = new VoiceResponse();
 
 	  twiml.say("body: "+req.body);
