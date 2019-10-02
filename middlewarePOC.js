@@ -19,7 +19,7 @@ const server = require('./server.js');
 		console.log('APP ligado');
 		
 		
-	app.post("/upxml", async function(req, res) {
+	app.post("/", async function(req, res) {
 		twiml = new VoiceResponse();
 	
 		function gather() {
@@ -29,7 +29,7 @@ const server = require('./server.js');
 			// If the user doesn't enter input, loop
 			twiml.redirect({
 			  method: 'POST'
-			}, 'https://testemiddle.herokuapp.com/upxml');
+			}, 'https://testemiddle.herokuapp.com/');
 		}
 		
 		if (req.body.Digits) {
@@ -45,7 +45,7 @@ const server = require('./server.js');
 				gather();
 				break;
 			}
-		  }/** 
+		}/** 
 		  else {
 			// If no input was sent, use the <Gather> verb to collect user input
 			gather();
@@ -65,7 +65,8 @@ const server = require('./server.js');
 		//twiml = new VoiceResponse();
 		//twiml.say(te);
 		
-		await upxml(req,res);
+		twiml.redirect('/');
+		
 
 		
 		if(te){
