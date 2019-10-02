@@ -23,7 +23,7 @@ const server = require('./server.js');
 	app.post("/", function (req, res) {
 		twiml = new VoiceResponse();
 		const gatherNode = twiml.gather({ 
-			action: '/gather',
+			action: '/gather/'+res,
 			input: 'dtmf',
 			timeout: 15,
 			numDigits: 1,
