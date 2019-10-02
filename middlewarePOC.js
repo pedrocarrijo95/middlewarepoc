@@ -57,10 +57,10 @@ const server = require('./server.js');
 		res.send(twiml.toString());
 	}**/
 	
-	app.get("/gather", function (req, res) {
+	app.get("/gather/:request", function (req, res) {
 		twiml = new VoiceResponse();
 
-	  twiml.say("body: ",req.params,res.params);
+	  twiml.say("body: ",req.params);
 	  res.type('text/xml');
 	  res.send(twiml.toString());	  
 	});
