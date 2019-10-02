@@ -37,10 +37,10 @@ const server = require('./server.js');
 		  res.type('text/xml');
 		  res.send(twiml.toString());	
 		  control = 1;
-		  gather();
+		  twiml.redirect('/');
 		}
 		else{
-		//gather();
+		gather();
 		res.writeHead(200, { 'Content-Type': 'text/xml' });
 		res.end(twiml.toString());
 		
