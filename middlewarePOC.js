@@ -25,7 +25,7 @@ const server = require('./server.js');
 	
 		
 		if(control != 1){
-		  twiml.say({ voice: 'alice' }, texto);
+		  twiml.say({ voice: 'alice' }, 'teste teste');
 		  res.type('text/xml');
 		  res.send(twiml.toString());	
 		  control = 1;
