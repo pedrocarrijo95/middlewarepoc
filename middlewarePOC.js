@@ -20,7 +20,7 @@ const server = require('./server.js');
 		console.log('APP ligado');
 		
 		
-	app.post("/", function (req, res) {
+	app.post("/", (req, res) => {
 		twiml = new VoiceResponse();
 		const gatherNode = twiml.gather({ 
 			action: '/gather',
@@ -54,7 +54,7 @@ const server = require('./server.js');
 		res.send(twiml.toString());
 	}**/
 	
-	app.post("/gather", (req, res) {
+	app.post("/gather", (req, res) => {
 		twiml = new VoiceResponse();
 
 	  twiml.say("body: "+req.body);
