@@ -10,9 +10,12 @@ const app = express();
  	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 
-app.get('/ligar', async function (request, response) => {
+app.get('/ligar', function (request, response) => {
   //TODO - inserir ligarCliente qdo estiver assincrona a funcao gerarVoz para funcionar	
-  await gerarVoz('Olá, você tem um dívida de 10 reais. Digite 1 para negociar ou 2 para desconsiderar.', response);
+  const init = asynv() => {
+	 await gerarVoz('Olá, você tem um dívida de 10 reais. Digite 1 para negociar ou 2 para desconsiderar.', response);
+  }
+  init();
   ligarCliente('https://testemiddle.herokuapp.com/'+response, 'Negociar', 1);
 
 });
