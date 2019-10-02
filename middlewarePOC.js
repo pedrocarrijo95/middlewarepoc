@@ -20,9 +20,23 @@ const server = require('./server.js');
 		console.log('APP ligado');
 		
 		
-	app.post("/", async function(req, res) {
+	app.post("/", (req, res) {
 		twiml = new VoiceResponse();
-		initGather(res);
+		const gatherNode = twiml.gather({ 
+			action: '/gather',
+			input: 'dtmf',
+			timeout: 15,
+			numDigits: 1,
+			method: 'POST'
+		});
+		gatherNode.say('For sales, press 1. For support, press 2.');
+		
+		// If the user doesn't enter input, loop
+		twiml.redirect('/');
+			
+
+		res.type('text/xml');
+		res.send(twiml.toString());
 	});	
 	
 	function initGather(res){
@@ -43,7 +57,8 @@ const server = require('./server.js');
 		res.send(twiml.toString());
 	}
 	
-	app.post("/gather", async function(req, res) {
+	app.post("/gather", (req, res) {
+		twiml = new VoiceResponse();
 		if (req.body.Digits) {
 			switch (req.body.Digits) {
 			  case '1':
@@ -62,11 +77,9 @@ const server = require('./server.js');
 			// If no input was sent, use the <Gather> verb to collect user input
 			twiml.redirect('/');
 		}
-	
-	  app.post("/", async function(req, res) {	
-		  res.type('text/xml');
-		  res.send(twiml.toString());
-	  });	  
+	  twiml.say("lalallalalalalala");
+	  res.type('text/xml');
+	  res.send(twiml.toString());	  
 	});
 	
 	app.post("/gather", function(req,res){
