@@ -24,6 +24,7 @@ const server = require('./server.js');
 		twiml = new VoiceResponse();
 		if(control != 1){
 			initGather(res);
+			control = 1;
 		}
 		else{
 			getDigit(req,res);
