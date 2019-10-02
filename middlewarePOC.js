@@ -22,19 +22,12 @@ const server = require('./server.js');
 		
 	app.post("/", async function(req, res) {
 		twiml = new VoiceResponse();
-		if(control != 1){
-			initGather(res);
-			control = 1;
-		}
-		else{
-			getDigit(req,res);
-		}
-
+		initGather(res);
 	});	
 	
 	function initGather(res){
 		const gatherNode = twiml.gather({ 
-			action: '/',
+			action: '/gather',
 			input: 'dtmf',
 			timeout: 15,
 			numDigits: 1,
@@ -50,7 +43,7 @@ const server = require('./server.js');
 		res.send(twiml.toString());
 	}
 	
-	function getDigit(req,res){
+	app.post("/gather", async function(req, res) {
 		if (req.body.Digits) {
 			switch (req.body.Digits) {
 			  case '1':
@@ -69,10 +62,12 @@ const server = require('./server.js');
 			// If no input was sent, use the <Gather> verb to collect user input
 			twiml.redirect('/');
 		}
-		
-	  res.type('text/xml');
-	  res.send(twiml.toString());			
-	}
+	
+	  app.post("/", async function(req, res) {	
+		  res.type('text/xml');
+		  res.send(twiml.toString());
+	  });	  
+	});
 	
 	app.post("/gather", function(req,res){
 				
