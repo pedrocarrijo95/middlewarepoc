@@ -81,13 +81,6 @@ const server = require('./server.js');
 	  res.type('text/xml');
 	  res.send(twiml.toString());	  
 	});
-	
-	app.post("/gather", function(req,res){
-				
-		twiml = new VoiceResponse();		
-		
-		
-	});
 		
 	app.get("/api/call/:message", async function(req, res) {
 		te = req.params.message;
