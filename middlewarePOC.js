@@ -14,6 +14,7 @@ const server = require('./server.js');
 
 	
 		var te = '';
+		var control = 0;
 		var twiml;
 		app.listen(process.env.PORT || 8080);
 		console.log('APP ligado');
@@ -21,6 +22,15 @@ const server = require('./server.js');
 		
 	app.post("/", async function(req, res) {
 		twiml = new VoiceResponse();
+	
+		
+		if(control != 1){
+		  twiml.say({ voice: 'alice' }, texto);
+		  res.type('text/xml');
+		  res.send(twiml.toString());	
+		  control = 1;
+		}
+		else{
 	
 		function gather() {
 			const gatherNode = twiml.gather({ numDigits: 1 });
@@ -31,7 +41,7 @@ const server = require('./server.js');
 			  method: 'POST'
 			}, 'https://testemiddle.herokuapp.com/');
 		}
-		gather();
+		await gather();
 		res.writeHead(200, { 'Content-Type': 'text/xml' });
 		res.end('req: '+req.body);
 		
@@ -59,6 +69,7 @@ const server = require('./server.js');
 			res.writeHead(200, { 'Content-Type': 'text/xml' });
 			res.end(twiml.toString());
 		});**/
+		}
 	
 
 	});	
@@ -68,7 +79,7 @@ const server = require('./server.js');
 		//twiml = new VoiceResponse();
 		//twiml.say(te);
 		
-		//twiml.redirect('/');
+		twiml.redirect('/');
 		
 
 		
