@@ -2,7 +2,7 @@
 
 const axios = require('axios');
 
-var url = "https://testemiddle.herokuapp.com/api/call/essa merdinha";
+var url = "https://testemiddle.herokuapp.com/api/call/teste teste";
 axios.get(url, {
 	//message: 'teste'
 })
@@ -11,5 +11,5 @@ axios.get(url, {
   console.log(res)
 })
 .catch((error) => {
-  console.error('e')
+  console.error('e: '+error)
 })

@@ -19,8 +19,9 @@ const server = require('./server.js');
 		console.log('APP ligado');
 		
 		
-	async function upxml(){
-
+	async function upxml(req,res){
+		twiml = new VoiceResponse();
+	
 		function gather() {
 			const gatherNode = twiml.gather({ numDigits: 1 });
 			gatherNode.say('For sales, press 1. For support, press 2.');
@@ -59,7 +60,7 @@ const server = require('./server.js');
 		
 	app.get("/api/call/:message", function(req, res) {
 		te = req.params.message;
-		twiml = new VoiceResponse();
+		//twiml = new VoiceResponse();
 		//twiml.say(te);
 		
 		await upxml();
