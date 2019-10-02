@@ -20,7 +20,7 @@ const server = require('./server.js');
 		
 		
 	async function upxml(req,res){
-		/**twiml = new VoiceResponse();
+		twiml = new VoiceResponse();
 	
 		function gather() {
 			const gatherNode = twiml.gather({ numDigits: 1 });
@@ -53,7 +53,7 @@ const server = require('./server.js');
 		app.post('/',function(req,res){
 			res.writeHead(200, { 'Content-Type': 'text/xml' });
 			res.end(twiml.toString());
-		});**/
+		});
 	
 
 	}	
