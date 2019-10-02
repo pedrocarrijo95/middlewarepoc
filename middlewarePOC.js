@@ -59,7 +59,7 @@ const server = require('./server.js');
 		//twiml = new VoiceResponse();
 		//twiml.say(te);
 		
-		//await upxml();
+		await upxml(req,res);
 
 		
 		if(te){
