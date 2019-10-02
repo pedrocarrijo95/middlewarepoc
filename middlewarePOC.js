@@ -19,11 +19,8 @@ const server = require('./server.js');
 		console.log('APP ligado');
 		
 		
-	app.get("/api/call/:message", function(req, res) {
-		te = req.params.message;
-		twiml = new VoiceResponse();
-		//twiml.say(te);
-		
+	async function upxml(){
+
 		function gather() {
 			const gatherNode = twiml.gather({ numDigits: 1 });
 			gatherNode.say('For sales, press 1. For support, press 2.');
@@ -50,12 +47,23 @@ const server = require('./server.js');
 			// If no input was sent, use the <Gather> verb to collect user input
 			gather();
 		  }
-		
+
+				
 		app.post('/',function(req,res){
 			res.writeHead(200, { 'Content-Type': 'text/xml' });
 			res.end(twiml.toString());
 		});
 	
+
+	}	
+		
+	app.get("/api/call/:message", function(req, res) {
+		te = req.params.message;
+		twiml = new VoiceResponse();
+		//twiml.say(te);
+		
+		await upxml();
+
 		
 		if(te){
 			console.log("entrou");
