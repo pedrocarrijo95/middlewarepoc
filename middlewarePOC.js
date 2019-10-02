@@ -19,7 +19,7 @@ const server = require('./server.js');
 		console.log('APP ligado');
 		
 		
-	async function upxml(req,res){
+	app.post("/upxml", async function(req, res) {
 		twiml = new VoiceResponse();
 	
 		function gather() {
@@ -27,10 +27,12 @@ const server = require('./server.js');
 			gatherNode.say('For sales, press 1. For support, press 2.');
 
 			// If the user doesn't enter input, loop
-			twiml.redirect('/api/call/');
+			twiml.redirect({
+			  method: 'POST'
+			}, 'https://testemiddle.herokuapp.com/upxml');
 		}
 		
-		/**if (req.body.Digits) {
+		if (req.body.Digits) {
 			switch (req.body.Digits) {
 			  case '1':
 				twiml.say('You selected sales. Good for you!');
@@ -43,7 +45,7 @@ const server = require('./server.js');
 				gather();
 				break;
 			}
-		  } 
+		  }/** 
 		  else {
 			// If no input was sent, use the <Gather> verb to collect user input
 			gather();
@@ -56,7 +58,7 @@ const server = require('./server.js');
 		});**/
 	
 
-	}	
+	});	
 		
 	app.get("/api/call/:message", async function(req, res) {
 		te = req.params.message;
