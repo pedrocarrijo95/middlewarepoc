@@ -23,7 +23,7 @@ const server = require('./server.js');
 	app.post("/", function (req, res) {
 		twiml = new VoiceResponse();
 		const gatherNode = twiml.gather({ 
-			action: '/gather/'+res,
+			action: '/gather/'+req	,
 			input: 'dtmf',
 			timeout: 15,
 			numDigits: 1,
@@ -60,7 +60,7 @@ const server = require('./server.js');
 	app.get("/gather/:request", function (req, res) {
 		twiml = new VoiceResponse();
 
-	  twiml.say("body: ",req.params);
+	  twiml.say("body: "+req.params);
 	  res.type('text/xml');
 	  res.send(twiml.toString());	  
 	});
