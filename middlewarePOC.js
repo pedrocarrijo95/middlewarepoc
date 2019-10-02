@@ -22,13 +22,22 @@ const server = require('./server.js');
 		
 	app.post("/", async function(req, res) {
 		twiml = new VoiceResponse();
+		if(control != 1){
+			initGather(res);
+		}
+		else{
+			getDigit(req,res);
+		}
 
+	});	
+	
+	function initGather(res){
 		const gatherNode = twiml.gather({ 
-		action: '/gather',
-		input: 'dtmf',
-		timeout: 15,
-		numDigits: 1,
-		method: 'POST'
+			action: '/',
+			input: 'dtmf',
+			timeout: 15,
+			numDigits: 1,
+			method: 'POST'
 		});
 		gatherNode.say('For sales, press 1. For support, press 2.');
 		
@@ -38,12 +47,9 @@ const server = require('./server.js');
 
 		res.type('text/xml');
 		res.send(twiml.toString());
-
-	});	
+	}
 	
-	app.post("/gather", function(req,res){
-				
-		twiml = new VoiceResponse();		
+	function getDigit(req,res){
 		if (req.body.Digits) {
 			switch (req.body.Digits) {
 			  case '1':
@@ -64,7 +70,13 @@ const server = require('./server.js');
 		}
 		
 	  res.type('text/xml');
-	  res.send(twiml.toString());		
+	  res.send(twiml.toString());			
+	}
+	
+	app.post("/gather", function(req,res){
+				
+		twiml = new VoiceResponse();		
+		
 		
 	});
 		
