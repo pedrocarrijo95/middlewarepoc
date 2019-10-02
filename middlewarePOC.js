@@ -63,8 +63,8 @@ const server = require('./server.js');
 			twiml.redirect('/');
 		}
 		
-	  response.type('text/xml');
-	  response.send(twiml.toString());		
+	  res.type('text/xml');
+	  res.send(twiml.toString());		
 		
 	});
 		
