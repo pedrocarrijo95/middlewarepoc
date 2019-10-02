@@ -23,7 +23,13 @@ const server = require('./server.js');
 	app.post("/", async function(req, res) {
 		twiml = new VoiceResponse();
 
-		const gatherNode = twiml.gather({ numDigits: 1, action: '/gather'});
+		const gatherNode = twiml.gather({ 
+		action: '/gather',
+		input: 'dtmf',
+		timeout: 15,
+		numDigits: 1,
+		method: 'POST'
+		});
 		gatherNode.say('For sales, press 1. For support, press 2.');
 		
 		// If the user doesn't enter input, loop
