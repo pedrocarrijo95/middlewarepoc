@@ -10,7 +10,7 @@ const app = express();
 
 app.get('/ligar', (request, response) => {
   //TODO - inserir ligarCliente qdo estiver assincrona a funcao gerarVoz para funcionar	
-  gerarVoz('Olá, você tem um dívida de 10 reais. Digite 1 para negociar ou 2 para desconsiderar.', response);
+  await gerarVoz('Olá, você tem um dívida de 10 reais. Digite 1 para negociar ou 2 para desconsiderar.', response);
   ligarCliente('https://testemiddle.herokuapp.com/'+response, 'Negociar', 1);
 
 });
@@ -54,7 +54,7 @@ app.post('/action/:action/id/:id', (request, response) => {
 });
 
 //TODO - deixar funcao assincrona
-function gerarVoz(texto, response) {
+async function gerarVoz(texto, response) {
   // utilizar webhook do ODA para capturar o texto de lá
   const twiml = new VoiceResponse();
   twiml.say({ voice: 'alice' }, texto);
@@ -68,7 +68,7 @@ funcao ligarCliente(url,actionType, id) {
       url: `${actionType}/${actionType}/id/${id}`,
       method: 'GET',
       to: '+123456789',
-      from: '+987654321'
+      from: '+19982412618'
     })
     .then(call => console.log(call.sid))
     .done();
