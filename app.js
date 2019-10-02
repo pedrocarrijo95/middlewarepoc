@@ -7,6 +7,8 @@ const express = require('express');
  
 const app = express();
  
+ 	app.listen(process.env.PORT || 8080);
+	console.log('APP ligado');
 
 app.get('/ligar', (request, response) => {
   //TODO - inserir ligarCliente qdo estiver assincrona a funcao gerarVoz para funcionar	
@@ -74,4 +76,4 @@ funcao ligarCliente(url,actionType, id) {
     .done();
 }	
 
-app.listen(3000);
+//app.listen(3000);
