@@ -20,7 +20,7 @@ const server = require('./server.js');
 		
 		
 	async function upxml(req,res){
-		twiml = new VoiceResponse();
+		/**twiml = new VoiceResponse();
 	
 		function gather() {
 			const gatherNode = twiml.gather({ numDigits: 1 });
@@ -30,7 +30,7 @@ const server = require('./server.js');
 			twiml.redirect('/api/call/');
 		}
 		
-		/**if (req.body.Digits) {
+		if (req.body.Digits) {
 			switch (req.body.Digits) {
 			  case '1':
 				twiml.say('You selected sales. Good for you!');
