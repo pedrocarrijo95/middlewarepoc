@@ -79,7 +79,7 @@ const server = require('./server.js');
 		//twiml = new VoiceResponse();
 		//twiml.say(te);
 		
-		twiml.redirect('/');
+		//twiml.redirect('/');
 		
 
 		
