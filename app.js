@@ -10,9 +10,9 @@ const app = express();
  	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 
-app.get('/ligar', async function (request, response) => {
+app.get('/ligar', (request, response) => {
   //TODO - inserir ligarCliente qdo estiver assincrona a funcao gerarVoz para funcionar	
-  await gerarVoz('Olá, você tem um dívida de 10 reais. Digite 1 para negociar ou 2 para desconsiderar.', response);
+  gerarVoz('Olá, você tem um dívida de 10 reais. Digite 1 para negociar ou 2 para desconsiderar.', response);
   ligarCliente('https://testemiddle.herokuapp.com/'+response, 'Negociar', 1);
 
 });
@@ -44,14 +44,14 @@ app.get('/action/:action/id/:id', (request, response) => {
   response.send(twiml.toString());
 });
 
-app.post('/action/:action/id/:id', async function(request, response) => {
+app.post('/action/:action/id/:id', (request, response) => {
   const data = request.params;
   const actionType = data.action;
   const id = data.id;
   const digit = request.body.Digits;
   // tratar retorno aqui
   
-  await gerarVoz('Obrigado pela resposta.', response)
+  gerarVoz('Obrigado pela resposta.', response)
 
 });
 
