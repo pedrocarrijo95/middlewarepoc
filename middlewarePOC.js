@@ -47,7 +47,7 @@
 		twiml = new VoiceResponse();
 
 		if (req.body.Digits) {
-			switch (request.body.Digits) {
+			switch (req.body.Digits) {
 			  case '1':
 				twiml.say('Vamos negociar então, compareça a nossa agência no dia 11 de novembro!');
 				break;
