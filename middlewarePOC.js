@@ -32,7 +32,7 @@
 			action: '/gather',
 			method: 'POST',
 		});
-		gatherNode.say({voice:'Polly.Vitoria'},'Olá, você tem um dívida de 10 reais, digite 1 para negociar ou 2,para desconsiderar.');
+		gatherNode.say({voice:'Polly.Vitoria'},'Olá, você tem uma dívida de 10 reais, digite 1 para negociar, ou 2 para desconsiderar.');
 		
 		// If the user doesn't enter input, loop
 		twiml.redirect('/');
@@ -42,18 +42,73 @@
 		res.send(twiml.toString());
 	});	
 	
+	app.post("/agradecimento", (req, res) => {
+		twiml = new VoiceResponse();
+		twiml.say({voice:'Polly.Vitoria'},'Negócio fechado ! Agradecemos por sua atenção');
+			
+
+		res.type('text/xml');
+		res.send(twiml.toString());
+	});	
 	
 	app.post("/gather", (req, res) => {
 		twiml = new VoiceResponse();
 
 		if (req.body.Digits) {
 			switch (req.body.Digits) {
-			  case '1':
-				twiml.say({voice:'Polly.Vitoria'},'Vamos negociar então, compareça a nossa agência no dia 11 de novembro!');
+			  case '1': //À VISTA OU PARCELADO?
+				const gatherNode = twiml.gather({ 
+					numDigits: 1,
+					action: '/negociar',
+					method: 'POST',
+				});
+				gatherNode.say({voice:'Polly.Vitoria'},'Para pagamento à vista de 8 reais digite 3, para pagamento parcelado em 2 vezes de 5 reais digite 4');
+
+				twiml.redirect('/gather');
 				break;
-			  case '2':
+			  case '2': //DESCONSIDERADA
 				twiml.say({voice:'Polly.Vitoria'},'Ok, desconsiderada a proposta.');
 				break;
+			  case '3': //PAGAMENTO À VISTA
+			    const gatherNode = twiml.gather({ 
+					numDigits: 1,
+					action: '/gather',
+					method: 'POST',
+				});
+				gatherNode.say({voice:'Polly.Vitoria'},'Para pagamento com boleto digite 5, para pagamento com cartão digite 6');
+
+				twiml.redirect('/gather');
+				break;
+			  case '4': //PAGAMENTO PARCELADO
+			    const gatherNode = twiml.gather({ 
+					numDigits: 1,
+					action: '/gather',
+					method: 'POST',
+				});
+				gatherNode.say({voice:'Polly.Vitoria'},'Para pagamento com boleto digite 5, para pagamento com cartão digite 6');
+
+				twiml.redirect('/gather');
+				break;
+			  case '5': //PAGAMENTO(BOLETO)
+			    const gatherNode = twiml.gather({ 
+					numDigits: 1,
+					action: '/agradecimento',
+					method: 'POST',
+				});
+				gatherNode.say({voice:'Polly.Vitoria'},'Para receber o boleto no email digite 1, para receber pelos correios digite 2');
+
+				twiml.redirect('/gather');
+				break;
+		      case '6': //PAGAMENTO(CARTÃO)
+			    const gatherNode = twiml.gather({ 
+					numDigits: 4,
+					action: '/agradecimento',
+					method: 'POST',
+				});
+				gatherNode.say({voice:'Polly.Vitoria'},'Digite o número do seu cartão');
+
+				twiml.redirect('/gather');
+				break;		
 			  default:
 				twiml.say({voice:'Polly.Vitoria'},'Desculpe não entendi o que digitou.').pause();
 				twiml.redirect('/');
@@ -67,7 +122,10 @@
 		res.type('text/xml');
 		res.send(twiml.toString());	  
 	});
-		
+	
+	
+	
+	
 	app.get("/api/call/:message", async function(req, res) {
 
 			console.log("entrou");
