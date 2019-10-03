@@ -46,9 +46,26 @@
 	app.post("/gather", (req, res) => {
 		twiml = new VoiceResponse();
 
-	  twiml.say("body: "+req.body.Digits);
-	  res.type('text/xml');
-	  res.send(twiml.toString());	  
+		if (request.body.Digits) {
+			switch (request.body.Digits) {
+			  case '1':
+				twiml.say('You selected sales. Good for you!');
+				break;
+			  case '2':
+				twiml.say('You need support. We will help!');
+				break;
+			  default:
+				twiml.say("Sorry, I don't understand that choice.").pause();
+				twiml.redirect('/');
+				break;
+			}
+		}else{
+			// If no input was sent, redirect to the / route
+			twiml.redirect('/');
+		}
+
+		res.type('text/xml');
+		res.send(twiml.toString());	  
 	});
 		
 	app.get("/api/call/:message", async function(req, res) {
