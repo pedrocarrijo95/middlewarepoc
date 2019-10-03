@@ -51,6 +51,44 @@
 		res.send(twiml.toString());
 	});	
 	
+	app.post("/modoPag", (req, res) => {
+		twiml = new VoiceResponse();
+		if (req.body.Digits) {
+			switch (req.body.Digits) {
+			  case '1': //PAGAMENTO À VISTA
+			    gatherNode = twiml.gather({ 
+					numDigits: 1,
+					action: '/gather',
+					method: 'POST',
+				});
+				gatherNode.say({voice:'Polly.Vitoria'},'Para pagamento com boleto digite 1, para pagamento com cartão digite 2');
+
+				twiml.redirect('/gather');
+				break;
+			  case '2': //PAGAMENTO PARCELADO
+			    gatherNode = twiml.gather({ 
+					numDigits: 1,
+					action: '/gather',
+					method: 'POST',
+				});
+				gatherNode.say({voice:'Polly.Vitoria'},'Para pagamento com boleto digite 1, para pagamento com cartão digite 2');
+
+				twiml.redirect('/gather');
+				break;
+			  default:
+				twiml.say({voice:'Polly.Vitoria'},'Desculpe não entendi o que digitou.').pause();
+				twiml.redirect('/');
+				break;
+			}
+		}else{
+			// If no input was sent, redirect to the / route
+			twiml.redirect('/');
+		}
+
+		res.type('text/xml');
+		res.send(twiml.toString());	  
+	});	
+	
 	app.post("/gather", (req, res) => {
 		twiml = new VoiceResponse();
 		var gatherNode;
@@ -59,10 +97,10 @@
 			  case '1': //À VISTA OU PARCELADO?
 				gatherNode = twiml.gather({ 
 					numDigits: 1,
-					action: '/gather',
+					action: '/modoPag',
 					method: 'POST',
 				});
-				gatherNode.say({voice:'Polly.Vitoria'},'Para pagamento à vista de 8 reais digite 3, para pagamento parcelado em 2 vezes de 5 reais digite 4');
+				gatherNode.say({voice:'Polly.Vitoria'},'Para pagamento à vista de 8 reais digite 1, para pagamento parcelado em 2 vezes de 5 reais digite 2');
 
 				twiml.redirect('/gather');
 				break;
