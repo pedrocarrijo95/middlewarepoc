@@ -53,11 +53,11 @@
 	
 	app.post("/gather", (req, res) => {
 		twiml = new VoiceResponse();
-
+		var gatherNode;
 		if (req.body.Digits) {
 			switch (req.body.Digits) {
 			  case '1': //À VISTA OU PARCELADO?
-				const gatherNode = twiml.gather({ 
+				gatherNode = twiml.gather({ 
 					numDigits: 1,
 					action: '/negociar',
 					method: 'POST',
@@ -70,7 +70,7 @@
 				twiml.say({voice:'Polly.Vitoria'},'Ok, desconsiderada a proposta.');
 				break;
 			  case '3': //PAGAMENTO À VISTA
-			    const gatherNode = twiml.gather({ 
+			    gatherNode = twiml.gather({ 
 					numDigits: 1,
 					action: '/gather',
 					method: 'POST',
@@ -80,7 +80,7 @@
 				twiml.redirect('/gather');
 				break;
 			  case '4': //PAGAMENTO PARCELADO
-			    const gatherNode = twiml.gather({ 
+			    gatherNode = twiml.gather({ 
 					numDigits: 1,
 					action: '/gather',
 					method: 'POST',
@@ -90,7 +90,7 @@
 				twiml.redirect('/gather');
 				break;
 			  case '5': //PAGAMENTO(BOLETO)
-			    const gatherNode = twiml.gather({ 
+			    gatherNode = twiml.gather({ 
 					numDigits: 1,
 					action: '/agradecimento',
 					method: 'POST',
@@ -100,7 +100,7 @@
 				twiml.redirect('/gather');
 				break;
 		      case '6': //PAGAMENTO(CARTÃO)
-			    const gatherNode = twiml.gather({ 
+			    gatherNode = twiml.gather({ 
 					numDigits: 4,
 					action: '/agradecimento',
 					method: 'POST',
