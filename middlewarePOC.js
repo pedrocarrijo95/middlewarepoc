@@ -1,5 +1,6 @@
 	var request = require('request');
 	var express = require('express');
+	var bodyParser = require('body-parser');
 	const axios = require('axios')
 
 	var app = express();
@@ -13,7 +14,10 @@
 	const server = require('./server.js');
 
 	
-	app.use(express.bodyParser());
+	app.use(bodyParser.urlencoded({
+		extended: true
+	}));
+	app.use(bodyParser.json());
 	
 	
 	var twiml;
