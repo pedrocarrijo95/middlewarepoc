@@ -32,7 +32,7 @@
 			action: '/gather',
 			method: 'POST',
 		});
-		gatherNode.say({voice= 'Vitoria'},'Olá, você tem um dívida de 10 reais. Digite 1 para negociar ou 2 para desconsiderar.');
+		gatherNode.say({voice: 'Vitoria'},'Olá, você tem um dívida de 10 reais. Digite 1 para negociar ou 2 para desconsiderar.');
 		
 		// If the user doesn't enter input, loop
 		twiml.redirect('/');
@@ -49,13 +49,13 @@
 		if (req.body.Digits) {
 			switch (req.body.Digits) {
 			  case '1':
-				twiml.say({voice= 'Vitoria'},'Vamos negociar então, compareça a nossa agência no dia 11 de novembro!');
+				twiml.say({voice:'Vitoria'},'Vamos negociar então, compareça a nossa agência no dia 11 de novembro!');
 				break;
 			  case '2':
-				twiml.say({voice= 'Vitoria'},'Ok, desconsiderada a proposta.');
+				twiml.say({voice: 'Vitoria'},'Ok, desconsiderada a proposta.');
 				break;
 			  default:
-				twiml.say({voice= 'Vitoria'},'Desculpe não entendi o que digitou.').pause();
+				twiml.say({voice: 'Vitoria'},'Desculpe não entendi o que digitou.').pause();
 				twiml.redirect('/');
 				break;
 			}
