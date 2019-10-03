@@ -32,7 +32,7 @@
 			action: '/gather',
 			method: 'POST',
 		});
-		gatherNode.say('For sales, press 1. For support, press 2.');
+		gatherNode.say('Olá, você tem um dívida de 10 reais. Digite 1 para negociar ou 2 para desconsiderar.');
 		
 		// If the user doesn't enter input, loop
 		twiml.redirect('/');
@@ -46,16 +46,16 @@
 	app.post("/gather", (req, res) => {
 		twiml = new VoiceResponse();
 
-		if (request.body.Digits) {
+		if (req.body.Digits) {
 			switch (request.body.Digits) {
 			  case '1':
-				twiml.say('You selected sales. Good for you!');
+				twiml.say('Vamos negociar então, compareça a nossa agência no dia 11 de novembro!');
 				break;
 			  case '2':
-				twiml.say('You need support. We will help!');
+				twiml.say('Ok, desconsiderada a proposta.');
 				break;
 			  default:
-				twiml.say("Sorry, I don't understand that choice.").pause();
+				twiml.say("Desculpe não entendi o que digitou.").pause();
 				twiml.redirect('/');
 				break;
 			}
