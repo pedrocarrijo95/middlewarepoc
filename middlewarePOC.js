@@ -12,6 +12,10 @@
 	const VoiceResponse = require('twilio').twiml.VoiceResponse;
 	const server = require('./server.js');
 
+	app.configure(function(){
+	  app.use(express.bodyParser());
+	  app.use(app.router);
+	});
 	
 	var twiml;
 	app.listen(process.env.PORT || 8080);
@@ -21,8 +25,9 @@
 	app.post("/", (req, res) => {
 		twiml = new VoiceResponse();
 		const gatherNode = twiml.gather({ 
-			action: '/gather',
 			numDigits: 1,
+			action: '/gather',
+			method: 'POST',
 		});
 		gatherNode.say('For sales, press 1. For support, press 2.');
 		
@@ -49,7 +54,7 @@
 			client.calls
 				  .create({
 					url: 'https://testemiddle.herokuapp.com/',//'https://demo.twilio.com/docs/voice.xml',
-					to:  '+5519983585258',
+					to:  '+5519982412618',
 					from: '+13343397409'
 				}).then(call => console.log(call.sid));
 			console.log("terminou");	
