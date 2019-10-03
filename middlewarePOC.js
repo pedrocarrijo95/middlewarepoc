@@ -51,6 +51,7 @@
 		res.send(twiml.toString());
 	});	
 	
+/** SEPARANDO AS REQUISIÇÕES DE PERGUNTAS PARA ORGANIZAR MELHOR O CÓDIGO
 	app.post("/modoPag", (req, res) => {
 		twiml = new VoiceResponse();
 		if (req.body.Digits) {
@@ -87,7 +88,7 @@
 
 		res.type('text/xml');
 		res.send(twiml.toString());	  
-	});	
+	});	**/
 	
 	app.post("/gather", (req, res) => {
 		twiml = new VoiceResponse();
@@ -100,7 +101,7 @@
 					action: '/gather',
 					method: 'POST',
 				});
-				gatherNode.say({voice:'Polly.Vitoria'},'Para pagamento à vista de 8 reais digite 1, para pagamento parcelado em 2 vezes de 5 reais digite 2');
+				gatherNode.say({voice:'Polly.Vitoria'},'Para pagamento à vista de 8 reais digite 3, para pagamento parcelado em 2 vezes de 5 reais digite 4');
 
 				twiml.redirect('/gather');
 				break;
