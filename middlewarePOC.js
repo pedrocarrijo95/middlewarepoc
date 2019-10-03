@@ -32,7 +32,7 @@
 			action: '/gather',
 			method: 'POST',
 		});
-		gatherNode.say({voice:'Polly.Vitoria'},'Olá, você tem um dívida de 10 reais. Digite 1 para negociar ou 2 para desconsiderar.');
+		gatherNode.say({voice:'Polly.Vitoria'},'Olá, você tem um dívida de 10 reais.... Digite 1    para negociar ou 2    para desconsiderar.');
 		
 		// If the user doesn't enter input, loop
 		twiml.redirect('/');
