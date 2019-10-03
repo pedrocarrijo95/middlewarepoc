@@ -46,7 +46,7 @@
 	app.post("/gather", (req, res) => {
 		twiml = new VoiceResponse();
 
-	  twiml.say("body: "+req.body);
+	  twiml.say("body: "+req.body.Digits);
 	  res.type('text/xml');
 	  res.send(twiml.toString());	  
 	});
