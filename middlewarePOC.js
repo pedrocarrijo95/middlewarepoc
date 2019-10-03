@@ -59,7 +59,7 @@
 			  case '1': //À VISTA OU PARCELADO?
 				gatherNode = twiml.gather({ 
 					numDigits: 1,
-					action: '/negociar',
+					action: '/gather',
 					method: 'POST',
 				});
 				gatherNode.say({voice:'Polly.Vitoria'},'Para pagamento à vista de 8 reais digite 3, para pagamento parcelado em 2 vezes de 5 reais digite 4');
