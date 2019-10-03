@@ -12,10 +12,9 @@
 	const VoiceResponse = require('twilio').twiml.VoiceResponse;
 	const server = require('./server.js');
 
-	app.configure(function(){
-	  app.use(express.bodyParser());
-	  app.use(app.router);
-	});
+	
+	app.use(express.bodyParser());
+	
 	
 	var twiml;
 	app.listen(process.env.PORT || 8080);
