@@ -12,6 +12,7 @@
 
 	const VoiceResponse = require('twilio').twiml.VoiceResponse;
 	const server = require('./server.js');
+	const webhook = require('./webhookODA.js');
 
 	
 	app.use(bodyParser.urlencoded({
@@ -29,7 +30,7 @@
 		twiml = new VoiceResponse();
 		const gatherNode = twiml.gather({ 
 			numDigits: 1,
-			action: '/gather',
+			action: '/user/message', //enviando para o webhook
 			method: 'POST',
 		});
 		gatherNode.say({voice:'Polly.Vitoria'},'Olá, você tem uma dívida de 10 reais, digite 1 para negociar, ou 2 para desconsiderar.');
