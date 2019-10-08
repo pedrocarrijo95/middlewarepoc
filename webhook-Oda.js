@@ -3,9 +3,9 @@ const { WebhookClient, WebhookEvent } = OracleBot.Middleware;
 
 module.exports = (app) => {
   const logger = console;
-  OracleBot.init(app, {
-    logger,
-  });
+  //OracleBot.init(app, {
+    //logger,
+  //});
 
   const webhook = new WebhookClient({
     channel: {
