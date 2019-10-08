@@ -47,7 +47,7 @@
 		twiml = new VoiceResponse();
 		const gatherNode = twiml.gather({ 
 			numDigits: 1,
-			action: '/user/message', //enviando para o webhook
+			action: '/gather', //enviando para o webhook
 			method: 'POST',
 		});
 		gatherNode.say({voice:'Polly.Vitoria'},'Olá, você tem uma dívida de 10 reais, digite 1 para negociar, ou 2 para desconsiderar.');
