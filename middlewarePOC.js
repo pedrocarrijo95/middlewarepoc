@@ -12,7 +12,7 @@
 
 	const VoiceResponse = require('twilio').twiml.VoiceResponse;
 	//const server = require('./server.js');
-	const hook = require('./webhook-Oda.js');
+	const hook = require('./webhook-Oda.js')(app);
 
 	
 	app.use(bodyParser.urlencoded({
