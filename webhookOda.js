@@ -15,7 +15,7 @@ const webhook = new WebhookClient({ channel: channel });
 webhook.on(WebhookEvent.ERROR, console.error); // receive errors
 
 // receive bot messages
-app.post('/bot/message', webhook.receiver()); // receive bot messages
+//app.post('/bot/message', webhook.receiver()); // receive bot messages
 webhook.on(WebhookEvent.MESSAGE_RECEIVED, message => {
   // format and send to messaging client...
 });
