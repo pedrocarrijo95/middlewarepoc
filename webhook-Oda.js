@@ -1,6 +1,6 @@
 const OracleBot = require('@oracle/bots-node-sdk');
 const { WebhookClient, WebhookEvent } = OracleBot.Middleware;
-
+var app = express();
 module.exports = (app) => {
   const logger = console;
   OracleBot.init(app, {
