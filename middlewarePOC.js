@@ -31,7 +31,7 @@
 		var text = webhook.receiver();
 		
 		const gatherNode = twiml.gather({ 
-			//numDigits: 8,
+			numDigits: 1,
 			action: '/user/message', //enviando para o webhook
 			method: 'POST',
 		});
