@@ -2,10 +2,10 @@ const OracleBot = require('@oracle/bots-node-sdk');
 const { WebhookClient, WebhookEvent } = OracleBot.Middleware;
 
 module.exports = (app) => {
-  //const logger = console;
-  //OracleBot.init(app, {
-    //logger,
-  //});
+  const logger = console;
+  OracleBot.init(app, {
+    logger,
+  });
 
   const webhook = new WebhookClient({
     channel: {
@@ -42,10 +42,10 @@ module.exports = (app) => {
 
   //app.post('/bot/message', webhook.receiver());
 
-  app.post('/user/message', (req, res) => {
+  app.get('/user/message', (req, res) => {
     const text  = req.body.Digits;
     assistantMessage(text).then(function (result) {
-	  res.send(result.messagePayload.text);
+	  //res.send(result.messagePayload.text);
     })
 	.catch(function(err) {
 	  console.error('Error: ' + err);
