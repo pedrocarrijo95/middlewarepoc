@@ -42,7 +42,7 @@ module.exports = (app) => {
 
   //app.post('/bot/message', webhook.receiver());
 
-  app.get('/user/message', (req, res) => {
+  app.post('/user/message', (req, res) => {
     const text  = req.body.Digits;
     assistantMessage(text).then(function (result) {
 	  res.send(result.messagePayload.text);
