@@ -12,7 +12,7 @@
 
 	const VoiceResponse = require('twilio').twiml.VoiceResponse;
 	const server = require('./server.js');
-	const hook = require('./webhook-oda.js');
+	//const hook = require('./webhook-oda.js');
 
 	
 	app.use(bodyParser.urlencoded({
@@ -28,7 +28,8 @@
 		
 	app.post('/bot/message', (req, res) => {
 		twiml = new VoiceResponse();
-		var text = webhook.receiver();
+		var text = "";
+		//var text = webhook.receiver();
 		
 		const gatherNode = twiml.gather({ 
 			numDigits: 1,
