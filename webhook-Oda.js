@@ -49,7 +49,7 @@ module.exports = (app) => {
     })
 	.catch(function(err) {
 	  console.error('Error: ' + err);
-	  console.dir(err);
+	  //console.dir(err);
 	});
   });
 
