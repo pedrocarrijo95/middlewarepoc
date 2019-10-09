@@ -29,7 +29,7 @@
 	app.post('/bot/message', (req, res) => {
 		twiml = new VoiceResponse();
 		//var text = "";
-		var text = webhook.receiver();
+		var text = hook.webhook.receiver();
 		
 		if(text == null){
 			text = 'Olá digite qualquer coisa para continuar';	
