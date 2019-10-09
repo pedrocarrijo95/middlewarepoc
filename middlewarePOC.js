@@ -1,3 +1,4 @@
+module.exports = (app) => {	
 	var request = require('request');
 	var express = require('express');
 	var bodyParser = require('body-parser');
@@ -205,4 +206,4 @@
 			//process.exit(0);
 		
 	});
-	
+}
