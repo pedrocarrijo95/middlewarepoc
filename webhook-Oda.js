@@ -49,8 +49,6 @@ module.exports = (app) => {
   }));
   app.use(bodyParser.json());
   
-  app.listen(process.env.PORT || 8080);
-  
   app.post('/bot/message', webhook.receiver());
 
   var twiml;
