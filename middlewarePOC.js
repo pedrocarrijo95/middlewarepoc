@@ -27,7 +27,6 @@
 	app.get('/bot', (req, res) => {
 		twiml = new VoiceResponse();
 		var texto = '1';
-		console.log(texto);
 		hook.assistantMessage(texto).then(function (result) {
 			//texto = result.messagePayload.text;
 			res.send(result.messagePayload.text);
