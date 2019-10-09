@@ -43,7 +43,7 @@ module.exports = (app) => {
   app.post('/bot/message', webhook.receiver());
 
   app.post('/user/message/', (req, res) => {
-    const texto1  = req.body.Digits;
+    const texto1  = '1';
     assistantMessage(texto1).then(function (result) {
 	  middleware.twiml = new middleware.VoiceResponse();
 	  var texto = result.messagePayload.text.toString();
