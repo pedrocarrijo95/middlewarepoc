@@ -42,9 +42,9 @@ module.exports = (app) => {
 
   app.post('/bot/message', webhook.receiver());
 
-  app.post('/user/message', (req, res) => {
-    const texto  = 'testes';
-    assistantMessage(texto).then(function (result) {
+  app.get('/user/message/:texto', (req, res) => {
+    const texto1  = req.params.texto;
+    assistantMessage(texto1).then(function (result) {
 	  //res.send(result.messagePayload.text);
     })
 	.catch(function(err) {

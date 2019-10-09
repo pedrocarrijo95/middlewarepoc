@@ -29,12 +29,11 @@
 		var texto = '1';
 		console.log(texto);
 		hook.assistantMessage(texto).then(function (result) {
-			//res.send(result.messagePayload.text);
 			//texto = result.messagePayload.text;
 			
 		})
 		.catch(function(err) {
-		  console.error('Teste: ' + err);
+		  console.error('Error: ' + err);
 		  console.dir(err);
 		});
 		if(texto == ''){
