@@ -20,7 +20,7 @@
 	app.use(bodyParser.json());
 	
 	
-	exports.twiml;
+	var twiml;
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 			
@@ -197,7 +197,7 @@
 			console.log("entrou");
 			client.calls
 				  .create({
-					url: 'https://testemiddle.herokuapp.com/bot',//'https://demo.twilio.com/docs/voice.xml',
+					url: 'https://testemiddle.herokuapp.com/user/message',//'https://demo.twilio.com/docs/voice.xml',
 					to:  '+5519982412618',
 					from: '+12015814199'
 				}).then(call => console.log(call.sid));

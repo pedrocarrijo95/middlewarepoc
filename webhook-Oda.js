@@ -2,6 +2,7 @@ const OracleBot = require('@oracle/bots-node-sdk');
 const { WebhookClient, WebhookEvent } = OracleBot.Middleware;
 const middleware = require('./middlewarePOC.js');
 module.exports = (app) => {
+	
   const logger = console;
   OracleBot.init(app, {
     logger,
@@ -42,10 +43,16 @@ module.exports = (app) => {
 
   app.post('/bot/message', webhook.receiver());
 
+  var twiml;
   app.post('/user/message/', (req, res) => {
-    const texto1  = '1';
-    assistantMessage(texto1).then(function (result) {
-	  middleware.twiml = new middleware.VoiceResponse();
+	var texto1;  
+	if(req.body.Digits){
+		texto1 = req.body.Digits;
+	}else{	
+		texto1  = 'iniciar';
+	}
+	assistantMessage(texto1).then(function (result) {
+	  twiml = new middleware.VoiceResponse();
 	  var texto = result.messagePayload.text.toString();
 	  //res.send(result.messagePayload.text);
 	  
