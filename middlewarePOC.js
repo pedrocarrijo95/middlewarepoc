@@ -29,7 +29,7 @@
 		var texto = '1';
 		hook.assistantMessage(texto).then(function (result) {
 			//res.send(result.messagePayload.text);
-			texto = result.messagePayload.text;
+			//texto = result.messagePayload.text;
 		})
 		.catch(function(err) {
 		  console.error('Error: ' + err);
