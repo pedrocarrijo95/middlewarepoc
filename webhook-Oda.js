@@ -53,10 +53,10 @@ module.exports = (app) => {
 
   var twiml;
   app.post('/user/message', (req, res) => {
-		await var texto2 = req.body.Digits.toString();
+		//await var texto2 = req.body.Digits.toString();
 		var texto1 = '1';
 		//res.send(texto1);
-		assistantMessage(req.body.Digits).then(function (result) {
+		assistantMessage(texto1).then(function (result) {
 		  twiml = new middleware.VoiceResponse();
 		  var texto = result.messagePayload.text.toString();
 		  //res.send(result.messagePayload.text);
