@@ -30,7 +30,7 @@
 	
 		const gatherNode = twiml.gather({ 
 			numDigits: 1,
-			action: '/user/message/teste', //enviando para o webhook
+			action: '/user/message/:Digits', //enviando para o webhook
 			method: 'GET',
 		});
 		gatherNode.say({voice:'Polly.Vitoria'},texto);
