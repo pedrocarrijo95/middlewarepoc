@@ -24,7 +24,7 @@
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 		
-		
+	hook.start();	
 	/**app.post('/bot/message', (req, res) => {
 		twiml = new VoiceResponse();
 		//var text = ''

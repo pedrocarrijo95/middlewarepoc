@@ -2,6 +2,7 @@ const OracleBot = require('@oracle/bots-node-sdk');
 const { WebhookClient, WebhookEvent } = OracleBot.Middleware;
 
 module.exports = (app) => {
+function start(){	
   const logger = console;
   OracleBot.init(app, {
     logger,
@@ -52,5 +53,6 @@ module.exports = (app) => {
 	  console.dir(err);
 	});
   });
+}
 
 }
