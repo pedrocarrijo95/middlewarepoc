@@ -49,9 +49,9 @@ module.exports = (app) => {
     assistantMessage(texto1).then(function (result) {
 	  twiml = new middleware.VoiceResponse();
 	  var texto = result.messagePayload.text.toString();
-	  //res.send(result.messagePayload.text);
+	  res.send(result.messagePayload.text);
 	  
-	  const gatherNode = middleware.twiml.gather({ 
+	  /**const gatherNode = middleware.twiml.gather({ 
 			numDigits: 1,
 			action: '/user/message', //enviando para o webhook
 			method: 'POST',
@@ -59,7 +59,7 @@ module.exports = (app) => {
 		gatherNode.say({voice:'Polly.Vitoria'},texto);
 		
 		res.type('text/xml');
-		res.send(middleware.twiml.toString());
+		res.send(middleware.twiml.toString());**/
     })
 	.catch(function(err) {
 	  console.error('Error: ' + err);
