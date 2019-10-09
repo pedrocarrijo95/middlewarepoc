@@ -1,8 +1,6 @@
 const OracleBot = require('@oracle/bots-node-sdk');
 const { WebhookClient, WebhookEvent } = OracleBot.Middleware;
 const middleware = require('./middlewarePOC.js');
-var express = require('express');
-var bodyParser = require('body-parser');
 module.exports = (app) => {
 
   const logger = console;
@@ -43,7 +41,6 @@ module.exports = (app) => {
     })
   }
 
-  
   app.post('/bot/message', webhook.receiver());
 
   var twiml;
