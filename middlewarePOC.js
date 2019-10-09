@@ -27,18 +27,16 @@
 		
 	app.post('/bot/message', (req, res) => {
 		twiml = new VoiceResponse();
-		var text = "";
+		//var text = ''
 		//var text = hook.webhook.receiver();
+		var	texto = 'Olá digite qualquer coisa para continuar';	
 		
-		if(text == ""){
-			text = 'Olá digite qualquer coisa para continuar';	
-		}
 		const gatherNode = twiml.gather({ 
 			numDigits: 1,
 			action: '/user/message', //enviando para o webhook
 			method: 'POST',
 		});
-		gatherNode.say({voice:'Polly.Vitoria'},text);
+		gatherNode.say({voice:'Polly.Vitoria'},texto);
 		
 		// If the user doesn't enter input, loop
 		twiml.redirect('/bot/message');	
