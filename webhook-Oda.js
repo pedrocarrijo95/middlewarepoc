@@ -2,7 +2,7 @@ const OracleBot = require('@oracle/bots-node-sdk');
 const { WebhookClient, WebhookEvent } = OracleBot.Middleware;
 const middleware = require('./middlewarePOC.js');
 module.exports = (app) => {
-
+	
   const logger = console;
   OracleBot.init(app, {
     logger,
@@ -44,30 +44,27 @@ module.exports = (app) => {
   app.post('/bot/message', webhook.receiver());
 
   var twiml;
-  app.get('/user/message/:digits', (req, res) => {
-		//await var texto2 = req.body.Digits.toString();
-		var texto1 = '1';
-		//res.send(texto1);
-		assistantMessage(texto1).then(function (result) {
-		  twiml = new middleware.VoiceResponse();
-		  var texto = result.messagePayload.text.toString();
-		  //res.send(result.messagePayload.text);
-		  
-		  const gatherNode = middleware.twiml.gather({ 
-				numDigits: 1,
-				action: '/user/message', //enviando para o webhook
-				method: 'GET',
-			});
-			gatherNode.say({voice:'Polly.Vitoria'},texto);
-			
-			res.type('text/xml');
-			res.send(middleware.twiml.toString());
-		})
-		.catch(function(err) {
-		  console.error('Error: ' + err);
-		  //console.dir(err);
+  app.post('/user/message', (req, res) => {
+	var texto1 = '1';  
+	assistantMessage(texto1).then(function (result) {
+	  twiml = new middleware.VoiceResponse();
+	  var texto = result.messagePayload.text.toString();
+	  //res.send(result.messagePayload.text);
+	  
+	  const gatherNode = middleware.twiml.gather({ 
+			numDigits: 1,
+			action: '/user/message', //enviando para o webhook
+			method: 'POST',
 		});
-	
+		gatherNode.say({voice:'Polly.Vitoria'},texto);
+		
+		res.type('text/xml');
+		res.send(middleware.twiml.toString());
+    })
+	.catch(function(err) {
+	  console.error('Error: ' + err);
+	  //console.dir(err);
+	});
   });
 
 }
