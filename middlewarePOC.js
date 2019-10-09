@@ -24,11 +24,19 @@
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 			
-	app.get('/bot/message', (req, res) => {
+	app.get('/bot', (req, res) => {
 		twiml = new VoiceResponse();
 		var texto = '1';
 		console.log(texto);
-
+		hook.assistantMessage(texto).then(function (result) {
+			//res.send(result.messagePayload.text);
+			//texto = result.messagePayload.text;
+			
+		})
+		.catch(function(err) {
+		  console.error('Error: ' + err);
+		  console.dir(err);
+		});
 		if(texto == ''){
 			texto = 'Olá digite qualquer coisa para continuar';	
 		}
@@ -191,7 +199,7 @@
 			console.log("entrou");
 			client.calls
 				  .create({
-					url: 'https://testemiddle.herokuapp.com/bot/message',//'https://demo.twilio.com/docs/voice.xml',
+					url: 'https://testemiddle.herokuapp.com/bot',//'https://demo.twilio.com/docs/voice.xml',
 					to:  '+5519982412618',
 					from: '+12015814199'
 				}).then(call => console.log(call.sid));
