@@ -1,6 +1,7 @@
 const OracleBot = require('@oracle/bots-node-sdk');
 const { WebhookClient, WebhookEvent } = OracleBot.Middleware;
 const middleware = require('./middlewarePOC.js');
+var bodyParser = require('body-parser');
 module.exports = (app) => {
 	
   const logger = console;
