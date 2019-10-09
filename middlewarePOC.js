@@ -19,7 +19,7 @@
 	app.use(bodyParser.json());
 	
 	
-	var twiml;
+    exports.twiml;
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 			
