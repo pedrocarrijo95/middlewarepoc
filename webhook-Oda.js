@@ -44,7 +44,7 @@ module.exports = (app) => {
   app.post('/bot/message', webhook.receiver());
 
   var twiml;
-  app.post('/user/message', (req, res) => {
+  app.get('/user/message/:digits', (req, res) => {
 		//await var texto2 = req.body.Digits.toString();
 		var texto1 = '1';
 		//res.send(texto1);
@@ -56,7 +56,7 @@ module.exports = (app) => {
 		  const gatherNode = middleware.twiml.gather({ 
 				numDigits: 1,
 				action: '/user/message', //enviando para o webhook
-				method: 'POST',
+				method: 'GET',
 			});
 			gatherNode.say({voice:'Polly.Vitoria'},texto);
 			
