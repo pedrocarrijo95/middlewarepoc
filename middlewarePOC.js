@@ -9,8 +9,8 @@
 	const authToken = "ee7d65ca02304bfeec42443b504b21de";
 	const client = require('twilio')(accountSid,authToken);
 
-
-	exports.VoiceResponse = require('twilio').twiml.VoiceResponse;
+	var VoiceResponse = require('twilio').twiml.VoiceResponse;
+	exports.VoiceResponse = VoiceResponse;
 	//const server = require('./server.js');
 	const hook = require('./webhook-Oda.js')(app);
 	
