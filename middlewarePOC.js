@@ -23,13 +23,20 @@
 	var twiml;
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
-		
-	hook.start();	
-	/**app.post('/bot/message', (req, res) => {
+			
+	app.post('/bot/message', (req, res) => {
 		twiml = new VoiceResponse();
-		//var text = ''
-		var texto = hook.webhook.receiver();
-		if(texto == null){
+		var texto = '';
+		assistantMessage(texto).then(function (result) {
+			//res.send(result.messagePayload.text);
+			texto = result.messagePayload.text;
+		})
+		.catch(function(err) {
+		  console.error('Error: ' + err);
+		  console.dir(err);
+		});
+		});
+		if(texto == ''){
 			texto = 'Olá digite qualquer coisa para continuar';	
 		}
 		const gatherNode = twiml.gather({ 
@@ -44,7 +51,7 @@
 		
 		res.type('text/xml');
 		res.send(twiml.toString());
-	});	**/
+	});	
 		
 	app.post("/", (req, res) => {
 		twiml = new VoiceResponse();
