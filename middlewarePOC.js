@@ -30,7 +30,7 @@
 		console.log(texto);
 		hook.assistantMessage(texto).then(function (result) {
 			//texto = result.messagePayload.text;
-			
+			res.send(result.messagePayload.text);
 		})
 		.catch(function(err) {
 		  console.error('Error: ' + err);
