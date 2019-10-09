@@ -25,7 +25,7 @@
 			
 	app.post('/bot', (req, res) => {
 		twiml = new VoiceResponse();
-		var	texto = 'Olá digite qualquer coisa para continuar';	
+		var	texto = 'Olá, você tem uma mensagem do bradesco, para ouvir digite qualquer tecla';	
 	
 		const gatherNode = twiml.gather({ 
 			numDigits: 1,
