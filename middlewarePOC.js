@@ -31,6 +31,9 @@
 		//var text = "";
 		var text = webhook.receiver();
 		
+		if(text == null){
+			text = 'Olá digite qualquer coisa para continuar';	
+		}
 		const gatherNode = twiml.gather({ 
 			numDigits: 1,
 			action: '/user/message', //enviando para o webhook
