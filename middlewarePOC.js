@@ -12,7 +12,7 @@
 
 	const VoiceResponse = require('twilio').twiml.VoiceResponse;
 	//const server = require('./server.js');
-	const hook = require('./webhook-Oda.js');
+	const hook = require('./webhook-Oda.js')(app);
 	
 	app.use(bodyParser.urlencoded({
 		extended: true
@@ -24,7 +24,7 @@
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 			
-	app.post('/bot', (req, res) => {
+	app.get('/bot', (req, res) => {
 		twiml = new VoiceResponse();
 		var texto = '1';
 		console.log(texto);

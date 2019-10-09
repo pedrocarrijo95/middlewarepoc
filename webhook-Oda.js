@@ -42,8 +42,8 @@ module.exports = (app) => {
 
   app.post('/bot/message', webhook.receiver());
 
-  app.get('/user/message/:texto', (req, res) => {
-    const texto1  = req.params.texto;
+  app.post('/user/message/', (req, res) => {
+    const texto1  = 'teste';
     assistantMessage(texto1).then(function (result) {
 	  res.send(result.messagePayload.text);
     })
