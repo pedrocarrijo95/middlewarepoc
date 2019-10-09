@@ -2,7 +2,6 @@ const OracleBot = require('@oracle/bots-node-sdk');
 const { WebhookClient, WebhookEvent } = OracleBot.Middleware;
 
 module.exports = (app) => {
-function start(){	
   const logger = console;
   OracleBot.init(app, {
     logger,
@@ -44,7 +43,7 @@ function start(){
   app.post('/bot/message', console.log(webhook.receiver()));
 
   app.post('/user/message', (req, res) => {
-    const texto  = req.body.Digits;
+    const texto  = 'testes';
     assistantMessage(texto).then(function (result) {
 	  //res.send(result.messagePayload.text);
     })
@@ -53,6 +52,5 @@ function start(){
 	  console.dir(err);
 	});
   });
-}
 
 }
