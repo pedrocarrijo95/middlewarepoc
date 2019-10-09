@@ -1,4 +1,3 @@
-module.exports = (app) => {	
 	var request = require('request');
 	var express = require('express');
 	var bodyParser = require('body-parser');
@@ -11,7 +10,7 @@ module.exports = (app) => {
 	const client = require('twilio')(accountSid,authToken);
 
 
-	const VoiceResponse = require('twilio').twiml.VoiceResponse;
+	exports.VoiceResponse = require('twilio').twiml.VoiceResponse;
 	//const server = require('./server.js');
 	const hook = require('./webhook-Oda.js')(app);
 	
@@ -21,7 +20,7 @@ module.exports = (app) => {
 	app.use(bodyParser.json());
 	
 	
-	var twiml;
+	exports.twiml;
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 			
@@ -206,4 +205,3 @@ module.exports = (app) => {
 			//process.exit(0);
 		
 	});
-}
