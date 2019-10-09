@@ -28,9 +28,10 @@
 	app.post('/bot/message', (req, res) => {
 		twiml = new VoiceResponse();
 		//var text = ''
-		//var text = hook.webhook.receiver();
-		var	texto = 'Olá digite qualquer coisa para continuar';	
-		
+		var texto = hook.webhook.receiver();
+		if(texto == null){
+			texto = 'Olá digite qualquer coisa para continuar';	
+		}
 		const gatherNode = twiml.gather({ 
 			numDigits: 1,
 			action: '/user/message', //enviando para o webhook
