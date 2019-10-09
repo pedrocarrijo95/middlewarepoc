@@ -41,7 +41,8 @@
 		// If the user doesn't enter input, loop
 		twiml.redirect('/bot/message');	
 		
-		
+		res.type('text/xml');
+		res.send(twiml.toString());
 	});	
 		
 	app.post("/", (req, res) => {
