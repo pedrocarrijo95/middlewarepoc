@@ -4,7 +4,7 @@ const middleware = require('./middlewarePOC.js');
 var express = require('express');
 var bodyParser = require('body-parser');
 module.exports = (app) => {
-  app = express();		
+
   const logger = console;
   OracleBot.init(app, {
     logger,
