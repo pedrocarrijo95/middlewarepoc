@@ -3,8 +3,8 @@ const { WebhookClient, WebhookEvent } = OracleBot.Middleware;
 const middleware = require('./middlewarePOC.js');
 var express = require('express');
 var bodyParser = require('body-parser');
-module.exports = {
-  var app = express();		
+module.exports = (app) => {
+  app = express();		
   const logger = console;
   OracleBot.init(app, {
     logger,
@@ -42,12 +42,14 @@ module.exports = {
       }
     })
   }
-  app.listen(process.env.PORT || 8080);
 
+  
   app.use(bodyParser.urlencoded({
 	extended: true
   }));
   app.use(bodyParser.json());
+  
+  app.listen(process.env.PORT || 8080);
   
   app.post('/bot/message', webhook.receiver());
 

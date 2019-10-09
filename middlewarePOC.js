@@ -11,7 +11,7 @@
 	var VoiceResponse = require('twilio').twiml.VoiceResponse;
 	exports.VoiceResponse = VoiceResponse;
 	//const server = require('./server.js');
-	const hook = require('./webhook-Oda.js');
+	const hook = require('./webhook-Oda.js')(app);
 	
 	app.use(bodyParser.urlencoded({
 		extended: true
