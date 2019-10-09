@@ -53,9 +53,9 @@ module.exports = (app) => {
 
   var twiml;
   app.post('/user/message', (req, res) => {
-		var	texto1 = req.body.Digits.toString();
-		res.send(texto1);
-		/**assistantMessage(req.body.Digits).then(function (result) {
+		await var texto1 = req.body.Digits.toString();
+		//res.send(texto1);
+		assistantMessage(req.body.Digits).then(function (result) {
 		  twiml = new middleware.VoiceResponse();
 		  var texto = result.messagePayload.text.toString();
 		  //res.send(result.messagePayload.text);
@@ -73,7 +73,7 @@ module.exports = (app) => {
 		.catch(function(err) {
 		  console.error('Error: ' + err);
 		  //console.dir(err);
-		});**/
+		});
 	
   });
 
