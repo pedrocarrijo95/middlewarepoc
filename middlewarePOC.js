@@ -13,7 +13,6 @@
 	const VoiceResponse = require('twilio').twiml.VoiceResponse;
 	//const server = require('./server.js');
 	const hook = require('./webhook-Oda.js')(app);
-	var web = new hook();
 	
 	app.use(bodyParser.urlencoded({
 		extended: true
@@ -29,7 +28,7 @@
 	app.post('/bot/message', (req, res) => {
 		twiml = new VoiceResponse();
 		var text = "";
-		//var text = web.webhook.receiver();
+		//var text = hook.webhook.receiver();
 		
 		if(text == ""){
 			text = 'Olá digite qualquer coisa para continuar';	
