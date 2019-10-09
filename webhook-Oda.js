@@ -52,7 +52,7 @@ module.exports = (app) => {
   var twiml;
   app.get('/user/message/:Digits', (req, res) => {
 	//var	texto1 = req.params.Digits;
-	res.send(req.params);
+	res.send(req.params.Digits);
 	/**assistantMessage(texto1).then(function (result) {
 	  twiml = new middleware.VoiceResponse();
 	  var texto = result.messagePayload.text.toString();
