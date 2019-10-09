@@ -24,7 +24,7 @@
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 			
-	app.get('/bot', (req, res) => {
+	app.post('/bot', (req, res) => {
 		twiml = new VoiceResponse();
 		var	texto = 'Olá digite qualquer coisa para continuar';	
 	
