@@ -44,13 +44,8 @@ module.exports = (app) => {
   app.post('/bot/message', webhook.receiver());
 
   var twiml;
-  app.post('/user/message/', (req, res) => {
-	var texto1;  
-	if(req.body.Digits){
-		texto1 = req.body.Digits;
-	}else{	
-		texto1  = 'iniciar';
-	}
+  app.post('/user/message', (req, res) => {
+	var	texto1 = req.body.Digits;
 	assistantMessage(texto1).then(function (result) {
 	  twiml = new middleware.VoiceResponse();
 	  var texto = result.messagePayload.text.toString();
