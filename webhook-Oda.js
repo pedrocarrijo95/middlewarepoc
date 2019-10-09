@@ -50,7 +50,7 @@ module.exports = (app) => {
   app.post('/bot/message', webhook.receiver());
 
   var twiml;
-  app.get('/user/message', (req, res) => {
+  app.get('/user/message/:Digits', (req, res) => {
 	//var	texto1 = req.params.Digits;
 	res.send(req.params);
 	/**assistantMessage(texto1).then(function (result) {
