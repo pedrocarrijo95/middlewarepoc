@@ -24,14 +24,14 @@
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 			
-	app.post('/bot', (req, res) => {
+	app.get('/bot', (req, res) => {
 		twiml = new VoiceResponse();
 		var	texto = 'Olá digite qualquer coisa para continuar';	
 	
 		const gatherNode = twiml.gather({ 
 			numDigits: 1,
 			action: '/user/message', //enviando para o webhook
-			method: 'POST',
+			method: 'GET',
 		});
 		gatherNode.say({voice:'Polly.Vitoria'},texto);
 		
@@ -188,6 +188,7 @@
 			client.calls
 				  .create({
 					url: 'https://testemiddle.herokuapp.com/bot',//'https://demo.twilio.com/docs/voice.xml',
+					method: 'GET',
 					to:  '+5519982412618',
 					from: '+12015814199'
 				}).then(call => console.log(call.sid));
