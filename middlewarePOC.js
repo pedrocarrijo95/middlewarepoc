@@ -1,7 +1,6 @@
 	var request = require('request');
 	var express = require('express');
 	var bodyParser = require('body-parser');
-	const axios = require('axios')
 
 	var app = express();
 
@@ -12,7 +11,7 @@
 	var VoiceResponse = require('twilio').twiml.VoiceResponse;
 	exports.VoiceResponse = VoiceResponse;
 	//const server = require('./server.js');
-	const hook = require('./webhook-Oda.js')(app);
+	const hook = require('./webhook-Oda.js');
 	
 	app.use(bodyParser.urlencoded({
 		extended: true
@@ -24,14 +23,13 @@
 	app.listen(process.env.PORT || 8080);
 	console.log('APP ligado');
 			
-	app.get('/bot', (req, res) => {
+	app.post('/bot', (req, res) => {
 		twiml = new VoiceResponse();
 		var	texto = 'Olá digite qualquer coisa para continuar';	
 	
 		const gatherNode = twiml.gather({ 
 			numDigits: 1,
-			action: '/user/message/:Digits', //enviando para o webhook
-			method: 'GET',
+			action: '/user/message', //enviando para o webhook
 		});
 		gatherNode.say({voice:'Polly.Vitoria'},texto);
 		
@@ -188,7 +186,6 @@
 			client.calls
 				  .create({
 					url: 'https://testemiddle.herokuapp.com/bot',//'https://demo.twilio.com/docs/voice.xml',
-					method: 'GET',
 					to:  '+5519982412618',
 					from: '+12015814199'
 				}).then(call => console.log(call.sid));
