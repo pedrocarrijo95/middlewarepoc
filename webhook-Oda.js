@@ -51,9 +51,9 @@ module.exports = (app) => {
 
   var twiml;
   app.get('/user/message/:Digits', (req, res) => {
-	//var	texto1 = req.params.Digits;
-	res.send(req.params.Digits);
-	/**assistantMessage(texto1).then(function (result) {
+	var	texto1 = req.params.Digits;
+	//res.send(req.params.Digits);
+	assistantMessage(texto1).then(function (result) {
 	  twiml = new middleware.VoiceResponse();
 	  var texto = result.messagePayload.text.toString();
 	  //res.send(result.messagePayload.text);
@@ -71,7 +71,7 @@ module.exports = (app) => {
 	.catch(function(err) {
 	  console.error('Error: ' + err);
 	  //console.dir(err);
-	});**/
+	});
   });
 
 }
