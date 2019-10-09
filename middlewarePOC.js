@@ -27,7 +27,14 @@
 	app.post('/bot/message', (req, res) => {
 		twiml = new VoiceResponse();
 		var texto = '1';
-
+		hook.assistantMessage(texto).then(function (result) {
+			//res.send(result.messagePayload.text);
+			//texto = result.messagePayload.text;
+		})
+		.catch(function(err) {
+		  console.error('Error: ' + err);
+		  console.dir(err);
+		});
 		if(texto == ''){
 			texto = 'Olá digite qualquer coisa para continuar';	
 		}
