@@ -39,7 +39,8 @@
 		res.type('text/xml');
 		res.send(twiml.toString());
 	});	
-		
+	
+	/**CÓDIGO PARA GATHER DIRETO NO NODEJS(SEM UTILIZAR ODA)	
 	app.post("/", (req, res) => {
 		twiml = new VoiceResponse();
 		const gatherNode = twiml.gather({ 
@@ -65,45 +66,6 @@
 		res.type('text/xml');
 		res.send(twiml.toString());
 	});	
-	
-/** SEPARANDO AS REQUISIÇÕES DE PERGUNTAS PARA ORGANIZAR MELHOR O CÓDIGO
-	app.post("/modoPag", (req, res) => {
-		twiml = new VoiceResponse();
-		if (req.body.Digits) {
-			switch (req.body.Digits) {
-			  case '1': //PAGAMENTO À VISTA
-			    gatherNode = twiml.gather({ 
-					numDigits: 1,
-					action: '/gather',
-					method: 'POST',
-				});
-				gatherNode.say({voice:'Polly.Vitoria'},'Para pagamento com boleto digite 1, para pagamento com cartão digite 2');
-
-				twiml.redirect('/gather');
-				break;
-			  case '2': //PAGAMENTO PARCELADO
-			    gatherNode = twiml.gather({ 
-					numDigits: 1,
-					action: '/gather',
-					method: 'POST',
-				});
-				gatherNode.say({voice:'Polly.Vitoria'},'Para pagamento com boleto digite 1, para pagamento com cartão digite 2');
-
-				twiml.redirect('/gather');
-				break;
-			  default:
-				twiml.say({voice:'Polly.Vitoria'},'Desculpe não entendi o que digitou.').pause();
-				twiml.redirect('/');
-				break;
-			}
-		}else{
-			// If no input was sent, redirect to the / route
-			twiml.redirect('/');
-		}
-
-		res.type('text/xml');
-		res.send(twiml.toString());	  
-	});	**/
 	
 	app.post("/gather", (req, res) => {
 		twiml = new VoiceResponse();
@@ -175,10 +137,7 @@
 
 		res.type('text/xml');
 		res.send(twiml.toString());	  
-	});
-	
-	
-	
+	});**/
 	
 	app.get("/api/call/:message", async function(req, res) {
 
