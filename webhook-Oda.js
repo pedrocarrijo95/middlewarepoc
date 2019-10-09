@@ -53,27 +53,29 @@ module.exports = (app) => {
 
   var twiml;
   app.post('/user/message', (req, res) => {
-	var	texto1 = req.body.Digits.toString();
+	//var	texto1 = req.body.Digits.toString();
 	//res.send(req.body.Digits);
-	assistantMessage(texto1).then(function (result) {
-	  twiml = new middleware.VoiceResponse();
-	  var texto = result.messagePayload.text.toString();
-	  //res.send(result.messagePayload.text);
-	  
-	  const gatherNode = middleware.twiml.gather({ 
-			numDigits: 1,
-			action: '/user/message', //enviando para o webhook
-			method: 'POST',
+	if(req.body.Digits){
+		assistantMessage(req.body.Digits).then(function (result) {
+		  twiml = new middleware.VoiceResponse();
+		  var texto = result.messagePayload.text.toString();
+		  //res.send(result.messagePayload.text);
+		  
+		  const gatherNode = middleware.twiml.gather({ 
+				numDigits: 1,
+				action: '/user/message', //enviando para o webhook
+				method: 'POST',
+			});
+			gatherNode.say({voice:'Polly.Vitoria'},texto);
+			
+			res.type('text/xml');
+			res.send(middleware.twiml.toString());
+		})
+		.catch(function(err) {
+		  console.error('Error: ' + err);
+		  //console.dir(err);
 		});
-		gatherNode.say({voice:'Polly.Vitoria'},texto);
-		
-		res.type('text/xml');
-		res.send(middleware.twiml.toString());
-    })
-	.catch(function(err) {
-	  console.error('Error: ' + err);
-	  //console.dir(err);
-	});
+	}
   });
 
 }
