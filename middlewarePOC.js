@@ -25,7 +25,7 @@
 	console.log('APP ligado');
 		
 		
-	app.post('/bot/message', (req, res) => {
+	/**app.post('/bot/message', (req, res) => {
 		twiml = new VoiceResponse();
 		//var text = ''
 		var texto = hook.webhook.receiver();
@@ -44,7 +44,7 @@
 		
 		res.type('text/xml');
 		res.send(twiml.toString());
-	});	
+	});	**/
 		
 	app.post("/", (req, res) => {
 		twiml = new VoiceResponse();
@@ -61,7 +61,7 @@
 
 		res.type('text/xml');
 		res.send(twiml.toString());
-	});	
+	});
 	
 	app.post("/agradecimento", (req, res) => {
 		twiml = new VoiceResponse();

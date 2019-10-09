@@ -40,7 +40,7 @@ module.exports = (app) => {
     })
   }
 
-  //app.post('/bot/message', webhook.receiver());
+  app.post('/bot/message', console.log(webhook.receiver()));
 
   app.post('/user/message', (req, res) => {
     const texto  = req.body.Digits;
