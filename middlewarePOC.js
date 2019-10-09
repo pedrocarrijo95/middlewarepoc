@@ -28,8 +28,8 @@
 		
 	app.post('/bot/message', (req, res) => {
 		twiml = new VoiceResponse();
-		var text = "";
-		//var text = webhook.receiver();
+		//var text = "";
+		var text = webhook.receiver();
 		
 		const gatherNode = twiml.gather({ 
 			numDigits: 1,
@@ -189,7 +189,7 @@
 			console.log("entrou");
 			client.calls
 				  .create({
-					url: 'https://testemiddle.herokuapp.com/',//'https://demo.twilio.com/docs/voice.xml',
+					url: 'https://testemiddle.herokuapp.com/bot/message',//'https://demo.twilio.com/docs/voice.xml',
 					to:  '+5519982412618',
 					from: '+12015814199'
 				}).then(call => console.log(call.sid));
