@@ -54,9 +54,12 @@ module.exports = (app) => {
 	  middleware.twiml = new middleware.VoiceResponse();
 	  var texto = result.messagePayload.text.toString();
 	  //res.send(result.messagePayload.text);
-	  
+	  var nums = 1;
+	  if(texto1 == '6'){
+		 nums = 4; 
+	  }
 	  const gatherNode = middleware.twiml.gather({ 
-			numDigits: 1,
+			numDigits: nums,
 			action: '/user/message', //enviando para o webhook
 			method: 'POST',
 		});
