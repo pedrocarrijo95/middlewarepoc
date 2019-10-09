@@ -1,11 +1,45 @@
 {
+  "name": "oracle-bot-webhook",
+  "version": "1.0.0",
+  "description": "Twilio with Oracle Bot Webhook channel",
+  "main": "service.js",
+  "license": "",
+  "author": "Leonardo de Barros and Pedro Carrijo",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leobarros79/oda-furhat-integration"
+  },  
   "scripts": {
     "start": "node middlewarePOC.js",
-    "test": "echo 'Error: no test specified' && exit 1"
+    "test": "echo 'Error: no test specified' && exit 1",
+    "eslint": "eslint *.js lib",
+    "eslint-fix": "eslint --fix *.js lib"    
   },
+  "keywords": [
+    "oracle",
+    "bots",
+    "mobile",
+    "components",
+    "dev",
+    "nodejs"
+  ],
+  "contributors": [
+    {
+      "name": "Leonardo de Barros",
+      "email": "leo.barros@oracle.com"
+    },
+    {
+      "name": "Pedro Carrijo",
+      "email": "pedro.carrijo@oracle.com"
+    }    
+  ],  
   "requires": true,
   "lockfileVersion": 1,
   "dependencies": {
+    "@oracle/bots-node-sdk": "^2.0.0",
     "@types/body-parser": {
       "integrity": "sha512-RoX2EZjMiFMjZh9lmYrwgoP9RTpAjSHiJxdp4oidAQVO02T7HER3xj9UKue5534ULWeqVEkujhWcyvUce+d68w==",
       "requires": {
