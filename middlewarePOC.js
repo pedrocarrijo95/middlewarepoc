@@ -34,7 +34,7 @@
 			
 		})
 		.catch(function(err) {
-		  console.error('Error: ' + err);
+		  console.error('Teste: ' + err);
 		  console.dir(err);
 		});
 		if(texto == ''){
