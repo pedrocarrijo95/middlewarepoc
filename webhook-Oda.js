@@ -45,7 +45,7 @@ module.exports = (app) => {
   app.get('/user/message/:texto', (req, res) => {
     const texto1  = req.params.texto;
     assistantMessage(texto1).then(function (result) {
-	  res.send(result.messagePayload.text);
+	  //res.send(result.messagePayload.text);
     })
 	.catch(function(err) {
 	  console.error('Error: ' + err);
