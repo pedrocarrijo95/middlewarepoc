@@ -4,7 +4,7 @@
   "description": "Twilio with Oracle Bot Webhook channel",
   "main": "service.js",
   "license": "",
-  "author": "Leonardo de Barros and Pedro Carrijo",
+  "author": "Pedro Carrijo",
   "engines": {
     "node": ">=6.0.0"
   },
@@ -27,10 +27,6 @@
     "nodejs"
   ],
   "contributors": [
-    {
-      "name": "Leonardo de Barros",
-      "email": "leo.barros@oracle.com"
-    },
     {
       "name": "Pedro Carrijo",
       "email": "pedro.carrijo@oracle.com"
