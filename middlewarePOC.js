@@ -4,8 +4,8 @@
 
 	var app = express();
 
-	const accountSid = "AC7db3a7b3bbb2cdbc29fec0cd173df6c3";
-	const authToken = "1d837b37552d092eda8f8a71ce0769d9";
+	const accountSid = "AC4ef49f1fc4fe19be7060d26678963e69";
+	const authToken = "eb036ffd7d2defcac59e03ae54630c86";
 	const client = require('twilio')(accountSid,authToken);
 
 	var VoiceResponse = require('twilio').twiml.VoiceResponse;
@@ -146,7 +146,7 @@
 				  .create({
 					url: 'https://testemiddle.herokuapp.com/bot',//'https://demo.twilio.com/docs/voice.xml',
 					to:  '+5519982412618',
-					from: '+12018015638'
+					from: '+12018015266'
 				}).then(call => console.log(call.sid));
 			console.log("terminou");	
 			//process.exit(0);
