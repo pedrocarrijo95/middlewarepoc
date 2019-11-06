@@ -25,7 +25,7 @@
 			
 	app.post('/bot', (req, res) => {
 		twiml = new VoiceResponse();
-		var	texto = 'Olá, você tem uma mensagem do banco X, para ouvir digite qualquer tecla';	
+		var	texto = 'Olá, você tem uma mensagem do Orabank, para ouvir digite qualquer tecla';	
 	
 		const gatherNode = twiml.gather({ 
 			numDigits: 1,
